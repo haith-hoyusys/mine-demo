@@ -33,6 +33,11 @@ const cx = 508.88;
 const cy = 277.22;
 const angleRadius = 36;
 
+// Label center offsets (measured once at init via getBBox, mirroring CONTENT_10 pattern)
+let _labelP_hw = { w: 0, h: 0 };
+let _labelV_hw = { w: 0, h: 0 };
+let _labelA_hw = { w: 0, h: 0 };
+
 // Configurable parameters
 let t_max = getConfig("t_max", 10);
 let animation_duration = getConfig("animation_duration", 5000); // ms
@@ -320,7 +325,23 @@ function syncConfigUI() {
   const $lblMax = $("#label-t-max tspan");
   if ($lblMax.length) {
     $lblMax.text(t_max);
+
+    // Căn giữa label-t-max theo mốc cuối (x = 678.75)
+    const TICK_END_X = 678.75;
+    const $lblText = $("#label-t-max");
+    if ($lblText.length) {
+      const rect = getSVGRect($lblText[0]);
+      const currentTranslateY = 544.58; // giữ nguyên y
+      const newX = TICK_END_X - rect.width / 2;
+      $lblText.attr("transform", "translate(" + newX + " " + currentTranslateY + ")");
+    }
   }
+
+  // Kích thước tĩnh của các label (đo từ design)
+  // Tính từ tâm (center) của label đến origin (baseline) của text
+  _labelP_hw = { w: 11.7, h: -12.2 };
+  _labelV_hw = { w: 10.86, h: -9.5 };
+  _labelA_hw = { w: 10.86, h: -9.5 };
 }
 
 function initCustomEvents() {
@@ -365,11 +386,17 @@ function setTime(t) {
 
   $("#pointP").attr({ cx: px, cy: py });
 
-  // Point P label position (radially outward so it never overlaps point P)
-  const labelDistP = radius + 24;
-  const labelPx = Math.round((cx + labelDistP * Math.cos(currentAngle) - 10) * 1000) / 1000;
-  const labelPy = Math.round((cy - labelDistP * Math.sin(currentAngle) - 10) * 1000) / 1000;
-  $("#textP").attr("transform", `translate(${labelPx} ${labelPy})`);
+  // Point P label: precise position matching design at t=0
+  {
+    // Căn theo offset tính từ gốc tọa độ O ở t=0:
+    // dx = 714.54 - 508.88 = 205.66, dy = 255.02 - 277.22 = -22.2
+    // Bán kính: 206.85, Góc offset: 0.107 rad
+    const anchorPx = cx + 206.85 * Math.cos(currentAngle + 0.107);
+    const anchorPy = cy - 206.85 * Math.sin(currentAngle + 0.107);
+    const newPx = Math.round((anchorPx - _labelP_hw.w) * 1000) / 1000;
+    const newPy = Math.round((anchorPy - _labelP_hw.h) * 1000) / 1000;
+    $("#textP").attr("transform", `translate(${newPx} ${newPy})`);
+  }
 
   // 2. Connecting Line OP & Swept Angle Arc omega*t
   if (currentTime > 0) {
@@ -461,10 +488,15 @@ function setTime(t) {
     `${b1vx.toFixed(2)} ${b1vy.toFixed(2)} ${vx.toFixed(2)} ${vy.toFixed(2)} ${b2vx.toFixed(2)} ${b2vy.toFixed(2)}`
   );
 
-  // Velocity label v (matching Scene 9 offset relative to vector tip)
-  const labelVx = Math.round((vx + 16.08 * Math.cos(currentAngle) + 22.73 * Math.sin(currentAngle)) * 1000) / 1000;
-  const labelVy = Math.round((vy - 16.08 * Math.sin(currentAngle) + 22.73 * Math.cos(currentAngle)) * 1000) / 1000;
-  $("#labelV").attr("transform", `translate(${labelVx} ${labelVy})`);
+  // Velocity label v: precise local offset from tip V matching design at t=0
+  {
+    // dx = 26.94 (radial), dy = 13.23 (tangent inverted)
+    const anchorVx = vx + 26.94 * Math.cos(currentAngle) + 13.23 * Math.sin(currentAngle);
+    const anchorVy = vy - 26.94 * Math.sin(currentAngle) + 13.23 * Math.cos(currentAngle);
+    const newVx = Math.round((anchorVx - _labelV_hw.w) * 1000) / 1000;
+    const newVy = Math.round((anchorVy - _labelV_hw.h) * 1000) / 1000;
+    $("#labelV").attr("transform", `translate(${newVx} ${newVy})`);
+  }
 
   showElement(getEl("#groupVelocity"), showVelocity);
 
@@ -492,10 +524,15 @@ function setTime(t) {
     `${b1ax.toFixed(2)} ${b1ay.toFixed(2)} ${ax.toFixed(2)} ${ay.toFixed(2)} ${b2ax.toFixed(2)} ${b2ay.toFixed(2)}`
   );
 
-  // Acceleration label a (matching Scene 9 offset relative to vector tip)
-  const labelAx = Math.round((ax + 1.7 * Math.cos(currentAngle) - 18.92 * Math.sin(currentAngle)) * 1000) / 1000;
-  const labelAy = Math.round((ay - 1.7 * Math.sin(currentAngle) - 18.92 * Math.cos(currentAngle)) * 1000) / 1000;
-  $("#labelA").attr("transform", `translate(${labelAx} ${labelAy})`);
+  // Acceleration label a: precise local offset from tip A matching design at t=0
+  {
+    // dx = 12.56, dy = -28.42
+    const anchorAx = ax + 12.56 * Math.cos(currentAngle) - 28.42 * Math.sin(currentAngle);
+    const anchorAy = ay - 12.56 * Math.sin(currentAngle) - 28.42 * Math.cos(currentAngle);
+    const newAx = Math.round((anchorAx - _labelA_hw.w) * 1000) / 1000;
+    const newAy = Math.round((anchorAy - _labelA_hw.h) * 1000) / 1000;
+    $("#labelA").attr("transform", `translate(${newAx} ${newAy})`);
+  }
 
   showElement(getEl("#groupAcceleration"), showAcceleration);
 
