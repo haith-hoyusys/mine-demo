@@ -21,3 +21,19 @@ var CONFIG = {
   // Cho phép chạy vô hạn vòng hay dừng khi hết 1 vòng (t_max)
   loop_infinite: false
 };
+
+// ─── URL Parameter Override (for testing only) ───────────────────────────────
+// Tester có thể truyền tham số qua URL để override config mà không cần sửa file.
+// Ví dụ: index.html?t_max=20   hoặc   index.html?t_max=5&animation_duration=8000
+// Chỉ các key đã có trong CONFIG và có giá trị là số mới được override.
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  params.forEach(function (value, key) {
+    if (Object.prototype.hasOwnProperty.call(CONFIG, key) && typeof CONFIG[key] === 'number') {
+      var parsed = parseFloat(value);
+      if (!isNaN(parsed)) {
+        CONFIG[key] = parsed;
+      }
+    }
+  });
+})();
