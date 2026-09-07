@@ -1,9 +1,23 @@
 var CONFIG = {
-  speed_ms: 16, // 1m/s=16px/s
-  data: [
-    [5, 3, 8, 3, 5, 6], // question 1
-    [6, 6, 8, 5, 4, 2, true, "center-center", 2, -1], // question 2
-    [6, 3, 2, 5, 7, 5, true, "center-left", 2, -1], // question 3
-    [6, 3, 3, 3, 6, 7, true, "center-left", 2, -1] // question 4
-  ]
+  // Khoảng thời gian tối đa (VD: 5, 10, 20, 100)
+  t_max: 10,
+
+  // Tổng thời gian chạy animation thực tế ngoài đời thực (ms) - Cố định không phụ thuộc t_max
+  animation_duration: 5000,
+
+  // Bán kính đường tròn (px)
+  radius: 180,
+
+  // Góc ban đầu (rad): 0 = nằm trên trục X dương tại (r, 0).
+  // Nếu muốn bắt đầu ở trục Y phía trên: đặt Math.PI / 2
+  initial_angle: 0,
+
+  // Độ dài vector vận tốc (px)
+  vector_v_length: 94.79,
+
+  // Độ dài vector gia tốc (px)
+  vector_a_length: 57.28,
+
+  // Cho phép chạy vô hạn vòng hay dừng khi hết 1 vòng (t_max)
+  loop_infinite: false
 };
