@@ -29,6 +29,12 @@ function getConfig(key, defaultValue) {
   return defaultValue;
 }
 
+function getTMax() {
+  let val = getConfig("t_max", 10);
+  val = Math.round(val);
+  return Math.max(0, Math.min(100, val));
+}
+
 const cx = 508.88;
 const cy = 277.22;
 const angleRadius = 36;
@@ -49,7 +55,7 @@ let _labelA_hw = { w: 0, h: 0 };
 let _labelOmegaT_hw = { w: 0, h: 0 };
 
 // Configurable parameters
-let t_max = getConfig("t_max", 10);
+let t_max = getTMax();
 
 // Slider dimensions
 const minDrag = 338.75;
@@ -240,7 +246,7 @@ window.initState = () => {
         value1: "play",
 
         mousedown: function () {
-          if (isCompleted && currentTime >= t_max) {
+          if (currentTime >= t_max) {
             return;
           }
           let ctrl = this;
@@ -249,7 +255,7 @@ window.initState = () => {
         },
 
         mouseup: function () {
-          if (isCompleted && currentTime >= t_max) {
+          if (currentTime >= t_max) {
             return;
           }
           let ctrl = this;
@@ -356,7 +362,7 @@ $(document).ready(function () {
 });
 
 function syncConfigUI() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   const $lblMax = $("#label-t-max tspan");
   if ($lblMax.length) {
@@ -411,7 +417,7 @@ function updateCheckboxesUI() {
 // 4. RENDERING & DYNAMIC VECTOR GRAPHICS
 // ==========================================
 function setTime(t) {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   currentTime = Math.max(0, Math.min(t_max, t));
 
   const omega = getOmega();
@@ -447,8 +453,8 @@ function setTime(t) {
     const headWidth = 8.14;
 
     if (angleSweep > 0.05) {
-      // isSpiral dựa trên angleSweep đầy đủ — không phải arcSweep — để đồng bộ với makeArcPoints
-      const isSpiral = angleSweep > 2 * Math.PI;
+      // isSpiral được quyết định dựa trên t_max: > 10 thì xoắn ốc ngay từ vòng đầu tiên
+      const isSpiral = getTMax() > 10;
       // r_tip: giữ angleRadius khi <= 1 vòng, tăng theo spiral khi > 1 vòng
       const r_tip = isSpiral
         ? angleRadius + (angleSweep / (2 * Math.PI)) * SPIRAL_GAP
@@ -603,25 +609,33 @@ function setTime(t) {
 }
 
 function updateSliderThumb(t) {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   const ratio = t / t_max;
   const sliderX = ratio * sliderLength;
   $("#drag-point-container").attr("transform", `translate(${sliderX} 0)`);
 }
 
 function updateButtonsState() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   const ctrlPlay = g_state && g_state.controls ? g_state.controls.ctrl_play_pause : null;
 
   // 1. Play / Pause / Resume buttons
   showElement(getEl(".btn-play, .btn-pause, .btn-resume"), false);
-  if (isCompleted && currentTime >= t_max) {
-    if (ctrlPlay) {
-      ctrlPlay.value = "invalid";
-      ctrlPlay.value1 = "resume";
+  if (currentTime >= t_max) {
+    if (isNewAnimate) {
+      if (ctrlPlay) {
+        ctrlPlay.value = "invalid";
+        ctrlPlay.value1 = "play";
+      }
+      showElement(getEl("#btn-play-invalid"), true);
+    } else {
+      if (ctrlPlay) {
+        ctrlPlay.value = "invalid";
+        ctrlPlay.value1 = "resume";
+      }
+      showElement(getEl("#btn-resume-invalid"), true);
     }
-    showElement(getEl("#btn-resume-invalid"), true);
   } else if (isAnimating) {
     if (ctrlPlay) {
       ctrlPlay.value = "valid";
@@ -665,7 +679,7 @@ function animationLoop(timestamp) {
   const elapsedMs = timestamp - lastFrameTime;
   lastFrameTime = timestamp;
 
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   // Tốc độ thời gian thực của t là cố định.
   // T_BASE=10 là chuẩn: khi t_max=10 animation mất đúng ANIMATION_DURATION ms.
@@ -709,7 +723,7 @@ function pauseAnimation() {
 }
 
 function resumeAnimation() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   if (currentTime >= t_max) {
     currentTime = 0;
   }
@@ -774,16 +788,16 @@ function declineDrag() {
 // Curve drawing helper for angle omega*t
 // - Khi rAngle (của arc thân) > 2*PI hoặc totalAngle > 2*PI: vẽ xoắn ốc Archimedean
 let makeArcPoints = (centreX, centreY, startAngle, startRadius, rAngle, totalAngle = rAngle) => {
-  const pointsPerQuarter = 70;
-  const points = [];
+  const pointsPerQuarter = 15; // Giảm từ 70 xuống 15 để tối ưu hiệu năng khi t_max lớn
   const absAngle = Math.abs(rAngle);
   const quarterTurns = (absAngle / (2 * Math.PI)) * 4;
   const totalSteps = Math.max(6, Math.round(quarterTurns * pointsPerQuarter));
 
-  // isSpiral dựa trên totalAngle (= angleSweep đầy đủ) — không phải rAngle (arcSweep)
+  // isSpiral được quyết định dựa trên t_max: > 10 thì xoắn ốc ngay từ vòng đầu tiên
   // Đảm bảo arc thân và đầu mũi tên luôn dùng cùng chế độ
-  const isSpiral = totalAngle > 2 * Math.PI;
+  const isSpiral = getTMax() > 10;
 
+  let pointsStr = "";
   for (let i = 0; i <= totalSteps; i++) {
     // In SVG, counter-clockwise angle decreases
     const angle = startAngle - (i * rAngle) / totalSteps;
@@ -793,11 +807,9 @@ let makeArcPoints = (centreX, centreY, startAngle, startRadius, rAngle, totalAng
     const r = isSpiral
       ? startRadius + (cumulativeAngle / (2 * Math.PI)) * SPIRAL_GAP
       : startRadius;
-    points.push([
-      (centreX + r * Math.cos(angle)).toFixed(2),
-      (centreY + r * Math.sin(angle)).toFixed(2),
-    ]);
+    
+    pointsStr += `${(centreX + r * Math.cos(angle)).toFixed(2)},${(centreY + r * Math.sin(angle)).toFixed(2)} `;
   }
 
-  return points.map((ps) => ps.join(",")).join(" ");
+  return pointsStr.trim();
 };
