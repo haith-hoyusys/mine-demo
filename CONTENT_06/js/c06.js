@@ -52,8 +52,8 @@ let _labelOmegaT_hw = { w: 0, h: 0 };
 let t_max = getConfig("t_max", 10);
 
 // Slider dimensions
-const minDrag = 338.75;
-const maxDrag = 678.75;
+const minDrag = 383.05;
+const maxDrag = 723.05;
 const sliderLength = maxDrag - minDrag; // 340px
 
 const totalSnapPoints = 11;
@@ -79,26 +79,23 @@ let lastFrameTime = 0;
 // 2. MATHEMATICAL CORE LOGIC
 // ==========================================
 
-// Angular velocity: constant omega = PI/5 (calibrated for t_max=10, exactly 1 full rotation per 10s)
-// omega does NOT change with t_max — a larger t_max means more rotations.
-function getOmega() {
-  return Math.PI / 5; // = 2*PI / 10
-}
+const X_OFFSET = 505.16;
+const Y_FIXED = 171.52;
+const SCALE = 150; // pixels per unit
 
-// Current angle in standard mathematical coordinates (rad)
-function getAngle(t) {
-  return INITIAL_ANGLE + getOmega() * t;
-}
-
-// Cartesian coordinates of Point P at time t
+// Coordinate of Point P at time t
 function getCoordinates(t) {
-  const angle = getAngle(t);
-  const x = Math.round((cx + RADIUS * Math.cos(angle)) * 1000) / 1000;
-  const y = Math.round((cy - RADIUS * Math.sin(angle)) * 1000) / 1000;
-  return { x, y, angle };
+  const phase = Math.PI * t - Math.PI / 3;
+  const valX = 2 * Math.sin(phase);
+  const px = Math.round((X_OFFSET + valX * SCALE) * 1000) / 1000;
+  const py = Y_FIXED;
+  
+  const valV = 2 * Math.PI * Math.cos(phase);
+  const valA = -2 * Math.pow(Math.PI, 2) * Math.sin(phase);
+  
+  return { px, py, valX, valV, valA };
 }
 
-// End condition check (separated for maximum flexibility)
 function checkEndCondition(t) {
   if (LOOP_INFINITE) {
     return false;
@@ -363,7 +360,7 @@ function syncConfigUI() {
     $lblMax.text(t_max);
 
     // Căn giữa label-t-max theo mốc cuối (x = 678.75)
-    const TICK_END_X = 678.75;
+    const TICK_END_X = 723.05;
     const $lblText = $("#label-t-max");
     if ($lblText.length) {
       const rect = getSVGRect($lblText[0]);
@@ -414,189 +411,100 @@ function setTime(t) {
   t_max = getConfig("t_max", 10);
   currentTime = Math.max(0, Math.min(t_max, t));
 
-  const omega = getOmega();
-  const angleSweep = omega * currentTime; // Arc magnitude omega*t (rad)
-
   // 1. Point P coordinates and position
   const coordP = getCoordinates(currentTime);
-  const px = coordP.x;
-  const py = coordP.y;
-  const currentAngle = coordP.angle;
+  const px = coordP.x || coordP.px;
+  const py = coordP.y || coordP.py;
+  const valX = coordP.valX;
+  const valV = coordP.valV;
+  const valA = coordP.valA;
+
+  $("#val_x").text(valX.toFixed(2));
+  $("#val_v").text(valV.toFixed(2));
+  $("#val_a").text(valA.toFixed(2));
 
   $("#pointP").attr({ cx: px, cy: py });
 
-  // Point P label: precise position matching design at t=0
+  // Point P label:
   {
-    // Căn theo offset tính từ gốc tọa độ O ở t=0:
-    // dx = 714.54 - 508.88 = 205.66, dy = 255.02 - 277.22 = -22.2
-    // Bán kính: 206.85, Góc offset: 0.107 rad
-    const anchorPx = cx + 206.85 * Math.cos(currentAngle + 0.107);
-    const anchorPy = cy - 206.85 * Math.sin(currentAngle + 0.107);
-    const newPx = Math.round((anchorPx - _labelP_hw.w) * 1000) / 1000;
-    const newPy = Math.round((anchorPy - _labelP_hw.h) * 1000) / 1000;
-    $("#textP").attr("transform", `translate(${newPx} ${newPy})`);
+    const anchorPx = px - 8;
+    const anchorPy = py - 29;
+    $("#textP").attr("transform", `translate(${anchorPx} ${anchorPy})`);
   }
 
-  // 2. Connecting Line OP & Swept Angle Arc omega*t
-  if (currentTime > 0) {
-    $("#lineOP").attr({ x1: cx, y1: cy, x2: px, y2: py });
-    showElement(getEl("#lineOP"), true);
+  // 3. Velocity Vector v (Orange-Red #ff4b00)
+  const scaleV = 74.95 / Math.PI;
+  const tipLenV = Math.abs(valV) * scaleV;
+  const dirV = valV >= 0 ? 1 : -1;
+  const headLenV = 21.68;
+  const headWidthV = 11.63;
+  const vy = py - 10;
 
-    const angleRadius = 36;
-    const headLen = 15.18;
-    const headWidth = 8.14;
+  if (tipLenV > 0) {
+      const vx = px + dirV * tipLenV;
+      
+      let lineLenV = tipLenV - headLenV + 4;
+      if (lineLenV < 0) lineLenV = 0; // Prevent overlapping if vector is too short
 
-    if (angleSweep > 0.05) {
-      // isSpiral dựa trên angleSweep đầy đủ — không phải arcSweep — để đồng bộ với makeArcPoints
-      const isSpiral = angleSweep > 2 * Math.PI;
-      // r_tip: giữ angleRadius khi <= 1 vòng, tăng theo spiral khi > 1 vòng
-      const r_tip = isSpiral
-        ? angleRadius + (angleSweep / (2 * Math.PI)) * SPIRAL_GAP
-        : angleRadius;
+      const lineEndX_V = px + dirV * lineLenV;
+      $("#lineV").attr({ x1: px, y1: vy, x2: lineEndX_V, y2: vy });
 
-      // headAngleSpan tính theo r_tip vì đầu mũi tên nằm trên spiral
-      const headAngleSpan = headLen / r_tip;
+      const baseCenterVx = vx - dirV * headLenV;
+      const b1vx = baseCenterVx;
+      const b1vy = vy - (headWidthV / 2);
+      const b2vx = baseCenterVx;
+      const b2vy = vy + (headWidthV / 2);
 
-      // Tip nằm trên vòng xoắn tại angle hiện tại, bán kính r_tip
-      const tipX = cx + r_tip * Math.cos(currentAngle);
-      const tipY = cy - r_tip * Math.sin(currentAngle);
+      $("#arrowheadV").attr(
+        "points",
+        `${b1vx.toFixed(2)} ${b1vy.toFixed(2)} ${vx.toFixed(2)} ${vy.toFixed(2)} ${b2vx.toFixed(2)} ${b2vy.toFixed(2)}`
+      );
 
-      if (angleSweep >= headAngleSpan) {
-        // Chord direction angle (midway between base angle and tip angle)
-        const dirAngle = currentAngle - headAngleSpan / 2;
-        const ux = -Math.sin(dirAngle);
-        const uy = -Math.cos(dirAngle);
-        const nx = Math.cos(dirAngle);
-        const ny = -Math.sin(dirAngle);
-
-        const baseCenterX = tipX - headLen * ux;
-        const baseCenterY = tipY - headLen * uy;
-
-        const w1x = baseCenterX - (headWidth / 2) * nx;
-        const w1y = baseCenterY - (headWidth / 2) * ny;
-        const w2x = baseCenterX + (headWidth / 2) * nx;
-        const w2y = baseCenterY + (headWidth / 2) * ny;
-
-        $("#arrowheadAngle").attr(
-          "points",
-          `${w1x.toFixed(2)} ${w1y.toFixed(2)} ${tipX.toFixed(2)} ${tipY.toFixed(2)} ${w2x.toFixed(2)} ${w2y.toFixed(2)}`
-        );
-        showElement(getEl("#arrowheadAngle"), true);
-
-        // Polyline arc dừng trước đầu mũi tên; truyền angleSweep để makeArcPoints biết chế độ spiral
-        const arcSweep = angleSweep - headAngleSpan;
-        const arcPoints = makeArcPoints(cx, cy, -INITIAL_ANGLE, angleRadius, arcSweep, angleSweep);
-        $("#arrowAngle").attr("points", arcPoints);
-        showElement(getEl("#arrowAngle"), true);
-      } else {
-        // When angle is small, draw arc to current angle and scale arrowhead
-        showElement(getEl("#arrowheadAngle"), false);
-        const arcPoints = makeArcPoints(cx, cy, -INITIAL_ANGLE, angleRadius, angleSweep, angleSweep);
-        $("#arrowAngle").attr("points", arcPoints);
-        showElement(getEl("#arrowAngle"), true);
-      }
-
-      // omega*t label:
-      // - < 2PI: đặt ở giữa arc (midAngle), như thiết kế gốc
-      // - >= 2PI: đặt đối diện OP (currentAngle + PI) để tránh chồng lên xoắn ốc
-      let anchorOmegaX, anchorOmegaY;
-      if (isSpiral) {
-        // Đối diện OP: góc currentAngle + PI, bán kính = r_tip + 28
-        const labelAngleRadius = r_tip + 28;
-        const labelOppAngle = currentAngle + Math.PI;
-        anchorOmegaX = cx + labelAngleRadius * Math.cos(labelOppAngle);
-        anchorOmegaY = cy - labelAngleRadius * Math.sin(labelOppAngle);
-      } else {
-        // Giữa arc: midAngle, bán kính cố định = angleRadius + 28
-        const midAngle = INITIAL_ANGLE + angleSweep / 2;
-        const labelAngleRadius = angleRadius + 28;
-        anchorOmegaX = cx + labelAngleRadius * Math.cos(midAngle);
-        anchorOmegaY = cy - labelAngleRadius * Math.sin(midAngle);
-      }
-      const labelOmegaX = Math.round((anchorOmegaX - _labelOmegaT_hw.w) * 1000) / 1000;
-      const labelOmegaY = Math.round((anchorOmegaY - _labelOmegaT_hw.h) * 1000) / 1000;
-      $("#textOmegaT").attr("transform", `translate(${labelOmegaX} ${labelOmegaY})`);
-      showElement(getEl("#textOmegaT"), true);
-    } else {
-      showElement(getEl("#arrowAngle, #arrowheadAngle, #textOmegaT"), false);
-    }
+      // Velocity label v:
+      const anchorVx = Math.min(vx, baseCenterVx);
+      const anchorVy = vy - 14;
+      $("#labelV").attr("transform", `translate(${anchorVx.toFixed(2)} ${anchorVy.toFixed(2)})`);
+      showElement(getEl("#groupVelocity"), showVelocity);
   } else {
-    showElement(getEl("#lineOP, #arrowAngle, #arrowheadAngle, #textOmegaT"), false);
+      showElement(getEl("#groupVelocity"), false);
   }
 
-  // 3. Velocity Vector v (Orange-Red #ff4b00, Tangent: angle + PI/2, matching Scene 9)
-  const angleV = currentAngle + Math.PI / 2;
-  const tipLenV = 112.5;
-  const lineLenV = 94.79;
-  const headLen = 21.68;
-  const headWidth = 11.63;
+  // 4. Acceleration Vector a (Blue #0b89dd)
+  const scaleA = 129.88 / 17.09;
+  const tipLenA = Math.abs(valA) * scaleA;
+  const dirA = valA >= 0 ? 1 : -1;
+  const headLenA = 21.68;
+  const headWidthA = 11.63;
+  const ay = py + 10;
 
-  const vx = Math.round((px + tipLenV * Math.cos(angleV)) * 1000) / 1000;
-  const vy = Math.round((py - tipLenV * Math.sin(angleV)) * 1000) / 1000;
+  if (tipLenA > 0) {
+      const ax = px + dirA * tipLenA;
+      
+      let lineLenA = tipLenA - headLenA + 4;
+      if (lineLenA < 0) lineLenA = 0;
 
-  const lineEndX_V = Math.round((px + lineLenV * Math.cos(angleV)) * 1000) / 1000;
-  const lineEndY_V = Math.round((py - lineLenV * Math.sin(angleV)) * 1000) / 1000;
-  $("#lineV").attr({ x1: px, y1: py, x2: lineEndX_V, y2: lineEndY_V });
+      const lineEndX_A = px + dirA * lineLenA;
+      $("#lineA").attr({ x1: px, y1: ay, x2: lineEndX_A, y2: ay });
 
-  const baseCenterVx = vx - headLen * Math.cos(angleV);
-  const baseCenterVy = vy + headLen * Math.sin(angleV);
-  const b1vx = baseCenterVx - (headWidth / 2) * Math.sin(angleV);
-  const b1vy = baseCenterVy - (headWidth / 2) * Math.cos(angleV);
-  const b2vx = baseCenterVx + (headWidth / 2) * Math.sin(angleV);
-  const b2vy = baseCenterVy + (headWidth / 2) * Math.cos(angleV);
+      const baseCenterAx = ax - dirA * headLenA;
+      const b1ax = baseCenterAx;
+      const b1ay = ay - (headWidthA / 2);
+      const b2ax = baseCenterAx;
+      const b2ay = ay + (headWidthA / 2);
 
-  $("#arrowheadV").attr(
-    "points",
-    `${b1vx.toFixed(2)} ${b1vy.toFixed(2)} ${vx.toFixed(2)} ${vy.toFixed(2)} ${b2vx.toFixed(2)} ${b2vy.toFixed(2)}`
-  );
+      $("#arrowheadA").attr(
+        "points",
+        `${b1ax.toFixed(2)} ${b1ay.toFixed(2)} ${ax.toFixed(2)} ${ay.toFixed(2)} ${b2ax.toFixed(2)} ${b2ay.toFixed(2)}`
+      );
 
-  // Velocity label v: precise local offset from tip V matching design at t=0
-  {
-    // dx = 26.94 (radial), dy = 13.23 (tangent inverted)
-    const anchorVx = vx + 26.94 * Math.cos(currentAngle) + 13.23 * Math.sin(currentAngle);
-    const anchorVy = vy - 26.94 * Math.sin(currentAngle) + 13.23 * Math.cos(currentAngle);
-    const newVx = Math.round((anchorVx - _labelV_hw.w) * 1000) / 1000;
-    const newVy = Math.round((anchorVy - _labelV_hw.h) * 1000) / 1000;
-    $("#labelV").attr("transform", `translate(${newVx} ${newVy})`);
+      // Acceleration label a:
+      const anchorAx = Math.min(ax, baseCenterAx);
+      const anchorAy = ay + 41.1;
+      $("#labelA").attr("transform", `translate(${anchorAx.toFixed(2)} ${anchorAy.toFixed(2)})`);
+      showElement(getEl("#groupAcceleration"), showAcceleration);
+  } else {
+      showElement(getEl("#groupAcceleration"), false);
   }
-
-  showElement(getEl("#groupVelocity"), showVelocity);
-
-  // 4. Acceleration Vector a (Blue #0b89dd, Centripetal towards center O: angle + PI, matching Scene 9)
-  const angleA = currentAngle + Math.PI;
-  const tipLenA = 75.0;
-  const lineLenA = 57.28;
-
-  const ax = Math.round((px + tipLenA * Math.cos(angleA)) * 1000) / 1000;
-  const ay = Math.round((py - tipLenA * Math.sin(angleA)) * 1000) / 1000;
-
-  const lineEndX_A = Math.round((px + lineLenA * Math.cos(angleA)) * 1000) / 1000;
-  const lineEndY_A = Math.round((py - lineLenA * Math.sin(angleA)) * 1000) / 1000;
-  $("#lineA").attr({ x1: px, y1: py, x2: lineEndX_A, y2: lineEndY_A });
-
-  const baseCenterAx = ax - headLen * Math.cos(angleA);
-  const baseCenterAy = ay + headLen * Math.sin(angleA);
-  const b1ax = baseCenterAx - (headWidth / 2) * Math.sin(angleA);
-  const b1ay = baseCenterAy - (headWidth / 2) * Math.cos(angleA);
-  const b2ax = baseCenterAx + (headWidth / 2) * Math.sin(angleA);
-  const b2ay = baseCenterAy + (headWidth / 2) * Math.cos(angleA);
-
-  $("#arrowheadA").attr(
-    "points",
-    `${b1ax.toFixed(2)} ${b1ay.toFixed(2)} ${ax.toFixed(2)} ${ay.toFixed(2)} ${b2ax.toFixed(2)} ${b2ay.toFixed(2)}`
-  );
-
-  // Acceleration label a: precise local offset from tip A matching design at t=0
-  {
-    // dx = 12.56, dy = -28.42
-    const anchorAx = ax + 12.56 * Math.cos(currentAngle) - 28.42 * Math.sin(currentAngle);
-    const anchorAy = ay - 12.56 * Math.sin(currentAngle) - 28.42 * Math.cos(currentAngle);
-    const newAx = Math.round((anchorAx - _labelA_hw.w) * 1000) / 1000;
-    const newAy = Math.round((anchorAy - _labelA_hw.h) * 1000) / 1000;
-    $("#labelA").attr("transform", `translate(${newAx} ${newAy})`);
-  }
-
-  showElement(getEl("#groupAcceleration"), showAcceleration);
 
   // 5. Update Slider thumb position
   updateSliderThumb(currentTime);

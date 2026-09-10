@@ -53,7 +53,7 @@ function ResizeBody() {
   $('#divBody').css({
     position: "absolute",
     left: left,
-    // top: mTop,
+    top: mTop,
     width: nWidth,
     height: nHeight,
     transform: 'scale(1)'
