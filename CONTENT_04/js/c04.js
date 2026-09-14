@@ -81,6 +81,13 @@ let showAcceleration = false;
 let rafId = null;
 let lastFrameTime = 0;
 
+// ── Pre-baked arc: tính sẵn toàn bộ điểm arc khi load trang ──
+// Mỗi frame chỉ cần substring() thay vì 600 vòng lặp cos/sin
+let _preArcStr = "";       // chuỗi điểm đầy đủ từ góc 0 → t_max
+let _preArcCharPos = [];   // vị trí ký tự sau điểm thứ k
+let _preArcMaxSweep = 0;   // angleSweep max (= omega * t_max)
+let _preArcSteps = 0;      // số bước đã pre-bake
+
 // ==========================================
 // 2. MATHEMATICAL CORE LOGIC
 // ==========================================
@@ -387,6 +394,9 @@ function syncConfigUI() {
   // textOmegaT: font-size 36px, "ωt" rộng ~39px, cap-height ~25px
   // w = half-width ≈ 19.5, h = -half-cap-height ≈ -12 (dịch xuống để căn giữa theo chiều dọc)
   _labelOmegaT_hw = { w: 19.5, h: -12 };
+
+  // Pre-bake arc points ngay sau khi biết t_max
+  precomputeArcData();
 }
 
 function initCustomEvents() {
@@ -416,6 +426,63 @@ function updateCheckboxesUI() {
 // ==========================================
 // 4. RENDERING & DYNAMIC VECTOR GRAPHICS
 // ==========================================
+
+// ── Pre-bake: tính sẵn toàn bộ điểm arc từ 0 → omega*t_max ──
+// Bài toán: cần N_STEPS điểm phân bố đều trên arc. Giữ cùng chất
+// lượng cao nhất (60 điểm/quarter) vì chạy pre-bake chỉ 1 lần.
+function precomputeArcData() {
+  const tMax = getTMax();
+  const omega = getOmega();
+  const maxSweep = omega * tMax;
+  const isSpiral = tMax > 10;
+
+  // Số bước tống: 60 điểm/quarter × số quarter của toàn bộ arc
+  const quarterTurns = (maxSweep / (2 * Math.PI)) * 4;
+  const totalSteps = Math.max(6, Math.round(quarterTurns * 60));
+
+  let str = "";
+  const charPos = [0]; // charPos[k] = độ dài chuỗi sau k điểm
+
+  for (let i = 0; i <= totalSteps; i++) {
+    const sweep = (i / totalSteps) * maxSweep;
+    const angle = -sweep; // startAngle = -INITIAL_ANGLE = 0, angle giảm theo sweep
+    const r = isSpiral
+      ? angleRadius + (sweep / (2 * Math.PI)) * SPIRAL_GAP
+      : angleRadius;
+    const px = (cx + r * Math.cos(angle)).toFixed(2);
+    const py = (cy + r * Math.sin(angle)).toFixed(2); // cy + sin(-sweep) = cy - sin(sweep)
+
+    if (i > 0) str += " ";
+    str += `${px},${py}`;
+    charPos.push(str.length); // charPos[i+1] = length sau điểm i
+  }
+
+  _preArcStr = str;
+  _preArcCharPos = charPos;
+  _preArcMaxSweep = maxSweep;
+  _preArcSteps = totalSteps;
+}
+
+// Trả về chuỗi điểm arc từ góc 0 đến targetSweep — O(1) bằng substring + nối điểm cuối chính xác
+function getArcSubstring(targetSweep) {
+  if (!_preArcStr || _preArcMaxSweep <= 0) return "";
+  const frac = Math.max(0, Math.min(1, targetSweep / _preArcMaxSweep));
+  const k = Math.floor(frac * _preArcSteps); // dùng floor để lấy đoạn pre-bake trước targetSweep
+  let baseStr = _preArcStr.substring(0, _preArcCharPos[k]);
+
+  // Nối thêm điểm cuối cùng chính xác tại targetSweep để lấp đầy khoảng hở
+  const isSpiral = getTMax() > 10;
+  const angle = -targetSweep;
+  const r = isSpiral
+    ? angleRadius + (targetSweep / (2 * Math.PI)) * SPIRAL_GAP
+    : angleRadius;
+  const px = (cx + r * Math.cos(angle)).toFixed(2);
+  const py = (cy + r * Math.sin(angle)).toFixed(2);
+
+  if (baseStr.length > 0) baseStr += " ";
+  return baseStr + `${px},${py}`;
+}
+
 function setTime(t) {
   t_max = getTMax();
   currentTime = Math.max(0, Math.min(t_max, t));
@@ -429,23 +496,20 @@ function setTime(t) {
   const py = coordP.y;
   const currentAngle = coordP.angle;
 
-  $("#pointP").attr({ cx: px, cy: py });
+  getEl("#pointP").attr({ cx: px, cy: py });
 
   // Point P label: precise position matching design at t=0
   {
-    // Căn theo offset tính từ gốc tọa độ O ở t=0:
-    // dx = 714.54 - 508.88 = 205.66, dy = 255.02 - 277.22 = -22.2
-    // Bán kính: 206.85, Góc offset: 0.107 rad
     const anchorPx = cx + 206.85 * Math.cos(currentAngle + 0.107);
     const anchorPy = cy - 206.85 * Math.sin(currentAngle + 0.107);
     const newPx = Math.round((anchorPx - _labelP_hw.w) * 1000) / 1000;
     const newPy = Math.round((anchorPy - _labelP_hw.h) * 1000) / 1000;
-    $("#textP").attr("transform", `translate(${newPx} ${newPy})`);
+    getEl("#textP").attr("transform", `translate(${newPx} ${newPy})`);
   }
 
   // 2. Connecting Line OP & Swept Angle Arc omega*t
   if (currentTime > 0) {
-    $("#lineOP").attr({ x1: cx, y1: cy, x2: px, y2: py });
+    getEl("#lineOP").attr({ x1: cx, y1: cy, x2: px, y2: py });
     showElement(getEl("#lineOP"), true);
 
     const angleRadius = 36;
@@ -483,22 +547,20 @@ function setTime(t) {
         const w2x = baseCenterX + (headWidth / 2) * nx;
         const w2y = baseCenterY + (headWidth / 2) * ny;
 
-        $("#arrowheadAngle").attr(
+        getEl("#arrowheadAngle").attr(
           "points",
           `${w1x.toFixed(2)} ${w1y.toFixed(2)} ${tipX.toFixed(2)} ${tipY.toFixed(2)} ${w2x.toFixed(2)} ${w2y.toFixed(2)}`
         );
         showElement(getEl("#arrowheadAngle"), true);
 
-        // Polyline arc dừng trước đầu mũi tên; truyền angleSweep để makeArcPoints biết chế độ spiral
+        // Arc thân: lookup O(1) từ pre-baked data — không tính cos/sin nữa
         const arcSweep = angleSweep - headAngleSpan;
-        const arcPoints = makeArcPoints(cx, cy, -INITIAL_ANGLE, angleRadius, arcSweep, angleSweep);
-        $("#arrowAngle").attr("points", arcPoints);
+        getEl("#arrowAngle")[0].setAttribute("points", getArcSubstring(arcSweep));
         showElement(getEl("#arrowAngle"), true);
       } else {
         // When angle is small, draw arc to current angle and scale arrowhead
         showElement(getEl("#arrowheadAngle"), false);
-        const arcPoints = makeArcPoints(cx, cy, -INITIAL_ANGLE, angleRadius, angleSweep, angleSweep);
-        $("#arrowAngle").attr("points", arcPoints);
+        getEl("#arrowAngle")[0].setAttribute("points", getArcSubstring(angleSweep));
         showElement(getEl("#arrowAngle"), true);
       }
 
@@ -521,7 +583,7 @@ function setTime(t) {
       }
       const labelOmegaX = Math.round((anchorOmegaX - _labelOmegaT_hw.w) * 1000) / 1000;
       const labelOmegaY = Math.round((anchorOmegaY - _labelOmegaT_hw.h) * 1000) / 1000;
-      $("#textOmegaT").attr("transform", `translate(${labelOmegaX} ${labelOmegaY})`);
+      getEl("#textOmegaT").attr("transform", `translate(${labelOmegaX} ${labelOmegaY})`);
       showElement(getEl("#textOmegaT"), true);
     } else {
       showElement(getEl("#arrowAngle, #arrowheadAngle, #textOmegaT"), false);
@@ -542,7 +604,7 @@ function setTime(t) {
 
   const lineEndX_V = Math.round((px + lineLenV * Math.cos(angleV)) * 1000) / 1000;
   const lineEndY_V = Math.round((py - lineLenV * Math.sin(angleV)) * 1000) / 1000;
-  $("#lineV").attr({ x1: px, y1: py, x2: lineEndX_V, y2: lineEndY_V });
+  getEl("#lineV").attr({ x1: px, y1: py, x2: lineEndX_V, y2: lineEndY_V });
 
   const baseCenterVx = vx - headLen * Math.cos(angleV);
   const baseCenterVy = vy + headLen * Math.sin(angleV);
@@ -551,7 +613,7 @@ function setTime(t) {
   const b2vx = baseCenterVx + (headWidth / 2) * Math.sin(angleV);
   const b2vy = baseCenterVy + (headWidth / 2) * Math.cos(angleV);
 
-  $("#arrowheadV").attr(
+  getEl("#arrowheadV").attr(
     "points",
     `${b1vx.toFixed(2)} ${b1vy.toFixed(2)} ${vx.toFixed(2)} ${vy.toFixed(2)} ${b2vx.toFixed(2)} ${b2vy.toFixed(2)}`
   );
@@ -563,7 +625,7 @@ function setTime(t) {
     const anchorVy = vy - 26.94 * Math.sin(currentAngle) + 13.23 * Math.cos(currentAngle);
     const newVx = Math.round((anchorVx - _labelV_hw.w) * 1000) / 1000;
     const newVy = Math.round((anchorVy - _labelV_hw.h) * 1000) / 1000;
-    $("#labelV").attr("transform", `translate(${newVx} ${newVy})`);
+    getEl("#labelV").attr("transform", `translate(${newVx} ${newVy})`);
   }
 
   showElement(getEl("#groupVelocity"), showVelocity);
@@ -578,7 +640,7 @@ function setTime(t) {
 
   const lineEndX_A = Math.round((px + lineLenA * Math.cos(angleA)) * 1000) / 1000;
   const lineEndY_A = Math.round((py - lineLenA * Math.sin(angleA)) * 1000) / 1000;
-  $("#lineA").attr({ x1: px, y1: py, x2: lineEndX_A, y2: lineEndY_A });
+  getEl("#lineA").attr({ x1: px, y1: py, x2: lineEndX_A, y2: lineEndY_A });
 
   const baseCenterAx = ax - headLen * Math.cos(angleA);
   const baseCenterAy = ay + headLen * Math.sin(angleA);
@@ -587,7 +649,7 @@ function setTime(t) {
   const b2ax = baseCenterAx + (headWidth / 2) * Math.sin(angleA);
   const b2ay = baseCenterAy + (headWidth / 2) * Math.cos(angleA);
 
-  $("#arrowheadA").attr(
+  getEl("#arrowheadA").attr(
     "points",
     `${b1ax.toFixed(2)} ${b1ay.toFixed(2)} ${ax.toFixed(2)} ${ay.toFixed(2)} ${b2ax.toFixed(2)} ${b2ay.toFixed(2)}`
   );
@@ -599,7 +661,7 @@ function setTime(t) {
     const anchorAy = ay - 12.56 * Math.sin(currentAngle) - 28.42 * Math.cos(currentAngle);
     const newAx = Math.round((anchorAx - _labelA_hw.w) * 1000) / 1000;
     const newAy = Math.round((anchorAy - _labelA_hw.h) * 1000) / 1000;
-    $("#labelA").attr("transform", `translate(${newAx} ${newAy})`);
+    getEl("#labelA").attr("transform", `translate(${newAx} ${newAy})`);
   }
 
   showElement(getEl("#groupAcceleration"), showAcceleration);
@@ -612,7 +674,7 @@ function updateSliderThumb(t) {
   t_max = getTMax();
   const ratio = t / t_max;
   const sliderX = ratio * sliderLength;
-  $("#drag-point-container").attr("transform", `translate(${sliderX} 0)`);
+  getEl("#drag-point-container").attr("transform", `translate(${sliderX} 0)`);
 }
 
 function updateButtonsState() {
@@ -788,7 +850,7 @@ function declineDrag() {
 // Curve drawing helper for angle omega*t
 // - Khi rAngle (của arc thân) > 2*PI hoặc totalAngle > 2*PI: vẽ xoắn ốc Archimedean
 let makeArcPoints = (centreX, centreY, startAngle, startRadius, rAngle, totalAngle = rAngle) => {
-  const pointsPerQuarter = 15; // Giảm từ 70 xuống 15 để tối ưu hiệu năng khi t_max lớn
+  const pointsPerQuarter = 60; // Tăng lên 60 để cong mịn, không lo hiệu năng do đã có pre-bake
   const absAngle = Math.abs(rAngle);
   const quarterTurns = (absAngle / (2 * Math.PI)) * 4;
   const totalSteps = Math.max(6, Math.round(quarterTurns * pointsPerQuarter));

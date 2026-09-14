@@ -29,6 +29,12 @@ function getConfig(key, defaultValue) {
   return defaultValue;
 }
 
+function getTMax() {
+  let val = getConfig("t_max", 10);
+  val = Math.round(val);
+  return Math.max(0, Math.min(1000, val));
+}
+
 const cx = 508.88;
 const cy = 277.22;
 const angleRadius = 36;
@@ -49,7 +55,7 @@ let _labelA_hw = { w: 0, h: 0 };
 let _labelOmegaT_hw = { w: 0, h: 0 };
 
 // Configurable parameters
-let t_max = getConfig("t_max", 10);
+let t_max = getTMax();
 
 // Slider dimensions
 const minDrag = 383.05;
@@ -353,7 +359,7 @@ $(document).ready(function () {
 });
 
 function syncConfigUI() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   const $lblMax = $("#label-t-max tspan");
   if ($lblMax.length) {
@@ -408,7 +414,7 @@ function updateCheckboxesUI() {
 // 4. RENDERING & DYNAMIC VECTOR GRAPHICS
 // ==========================================
 function setTime(t) {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   currentTime = Math.max(0, Math.min(t_max, t));
 
   // 1. Point P coordinates and position
@@ -511,25 +517,33 @@ function setTime(t) {
 }
 
 function updateSliderThumb(t) {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   const ratio = t / t_max;
   const sliderX = ratio * sliderLength;
   $("#drag-point-container").attr("transform", `translate(${sliderX} 0)`);
 }
 
 function updateButtonsState() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   const ctrlPlay = g_state && g_state.controls ? g_state.controls.ctrl_play_pause : null;
 
   // 1. Play / Pause / Resume buttons
   showElement(getEl(".btn-play, .btn-pause, .btn-resume"), false);
-  if (isCompleted && currentTime >= t_max) {
-    if (ctrlPlay) {
-      ctrlPlay.value = "invalid";
-      ctrlPlay.value1 = "resume";
+  if (currentTime >= t_max) {
+    if (isNewAnimate) {
+      if (ctrlPlay) {
+        ctrlPlay.value = "invalid";
+        ctrlPlay.value1 = "play";
+      }
+      showElement(getEl("#btn-play-invalid"), true);
+    } else {
+      if (ctrlPlay) {
+        ctrlPlay.value = "invalid";
+        ctrlPlay.value1 = "resume";
+      }
+      showElement(getEl("#btn-resume-invalid"), true);
     }
-    showElement(getEl("#btn-resume-invalid"), true);
   } else if (isAnimating) {
     if (ctrlPlay) {
       ctrlPlay.value = "valid";
@@ -573,7 +587,7 @@ function animationLoop(timestamp) {
   const elapsedMs = timestamp - lastFrameTime;
   lastFrameTime = timestamp;
 
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
 
   // Tốc độ thời gian thực của t là cố định.
   // T_BASE=10 là chuẩn: khi t_max=10 animation mất đúng ANIMATION_DURATION ms.
@@ -617,7 +631,7 @@ function pauseAnimation() {
 }
 
 function resumeAnimation() {
-  t_max = getConfig("t_max", 10);
+  t_max = getTMax();
   if (currentTime >= t_max) {
     currentTime = 0;
   }

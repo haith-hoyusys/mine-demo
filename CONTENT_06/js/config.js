@@ -1,5 +1,6 @@
 var CONFIG = {
-  // Khoảng thời gian tối đa (VD: 5, 10, 20, 100)
+  // Khoảng thời gian tối đa (VD: 5, 10, 20, 100, 1000)
+  // Note: Please enter a integer from 0 to 1000.
   t_max: 10
 };
 
