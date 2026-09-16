@@ -1592,7 +1592,7 @@ function controlTouch() {
         $("#rect-overlay").css({ visibility: "visible" });
     });
 
-    $(document).on("mouseup", function () {
+    $(window).on("mouseup", function () {
         if ($("#rect-overlay").length) {
             $("#rect-overlay").css({ visibility: "hidden" });
         }
@@ -1958,7 +1958,7 @@ $(document).ready(function () {
                     .css("position", "absolute");
             }
 
-            $(document).on("mousemove", function (event) {
+            $(window).on("mousemove", function (event) {
                 if (isDrag) {
                     ctrl.is_drag = true;
                     fnDrag(event, false, "mousemove");
@@ -1976,7 +1976,7 @@ $(document).ready(function () {
                 }
             });
 
-            $(document).on("mouseup", function (event) {
+            $(window).on("mouseup", function (event) {
                 if (isDrag) {
                     fnDrag(event, true, "mouseup");
                     keepScrollBarNotMove(el);
@@ -2107,7 +2107,7 @@ $(document).ready(function () {
             }
 
             let prevMove = { x: 0, y: 0 };
-            $(document).on("mousemove", function (event) {
+            $(window).on("mousemove", function (event) {
                 if (isDrag) {
                     let dx = event.clientX - prevMove.x;
                     let dy = event.clientY - prevMove.y;
@@ -2135,7 +2135,7 @@ $(document).ready(function () {
                 }
             });
 
-            $(document).on("mouseup", function (event) {
+            $(window).on("mouseup", function (event) {
                 if (isDrag) {
                     fnDrag(event, true, "mouseup", true);
                     keepScrollBarNotMove(el);
@@ -2315,7 +2315,7 @@ $(document).ready(function () {
             if (ctrl.render) ctrl.render();
         });
 
-        $(document).on("mouseup", async function (e) {
+        $(window).on("mouseup", async function (e) {
             g_isMouseDown = false;
             g_isDragging = false;
             console.log("g_latestMousePress mouseup", g_latestMousePress);
