@@ -243,7 +243,7 @@ window.initState = () => {
         value1: "play",
 
         mousedown: function () {
-          if (isCompleted && currentTime >= t_max) {
+          if (currentTime >= t_max) {
             return;
           }
           let ctrl = this;
@@ -252,7 +252,7 @@ window.initState = () => {
         },
 
         mouseup: function () {
-          if (isCompleted && currentTime >= t_max) {
+          if (currentTime >= t_max) {
             return;
           }
           let ctrl = this;
