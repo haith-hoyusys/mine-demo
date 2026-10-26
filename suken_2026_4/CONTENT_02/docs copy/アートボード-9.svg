@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 648">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-family: rounded-mplus-1p-regular, 'Rounded M+ 1p';
+      }
+
+      .cls-1, .cls-2, .cls-5, .cls-6, .cls-7 {
+        font-size: 18px;
+      }
+
+      .cls-8 {
+        fill: #fafafa;
+      }
+
+      .cls-9 {
+        stroke-width: 7px;
+      }
+
+      .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-22 {
+        fill: none;
+      }
+
+      .cls-9, .cls-23, .cls-24 {
+        stroke: #717071;
+      }
+
+      .cls-9, .cls-19 {
+        stroke-linecap: square;
+      }
+
+      .cls-2 {
+        glyph-orientation-vertical: 0deg;
+        text-orientation: upright;
+        writing-mode: tb;
+      }
+
+      .cls-25 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-26 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-27 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-28 {
+        fill: #f2f2f2;
+      }
+
+      .cls-29, .cls-3, .cls-22 {
+        font-size: 16px;
+      }
+
+      .cls-29, .cls-30, .cls-31, .cls-32 {
+        fill: red;
+      }
+
+      .cls-33 {
+        fill: #cbcbcb;
+      }
+
+      .cls-34, .cls-13, .cls-15, .cls-32 {
+        font-family: rounded-mplus-1p-bold, 'Rounded M+ 1p';
+        font-weight: 700;
+      }
+
+      .cls-35 {
+        fill: #ccc;
+      }
+
+      .cls-5 {
+        fill: #b2b2b2;
+      }
+
+      .cls-5, .cls-6, .cls-36 {
+        font-family: rounded-mplus-1p-medium, 'Rounded M+ 1p';
+        font-weight: 500;
+      }
+
+      .cls-37 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-11 {
+        stroke-width: 1.8px;
+      }
+
+      .cls-11, .cls-18 {
+        stroke: #000;
+      }
+
+      .cls-38 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-39 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-40 {
+        isolation: isolate;
+      }
+
+      .cls-12, .cls-16, .cls-18 {
+        stroke-dasharray: 4 3;
+      }
+
+      .cls-12, .cls-16, .cls-21 {
+        stroke: red;
+      }
+
+      .cls-13 {
+        stroke-width: 10px;
+      }
+
+      .cls-13, .cls-15, .cls-22 {
+        stroke: #fff;
+        stroke-linejoin: round;
+      }
+
+      .cls-13, .cls-15, .cls-32 {
+        font-size: 30px;
+      }
+
+      .cls-41 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-6, .cls-42 {
+        fill: #0b89dd;
+      }
+
+      .cls-43 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-14 {
+        stroke: #0b89dd;
+      }
+
+      .cls-14, .cls-15, .cls-17 {
+        stroke-width: 3px;
+      }
+
+      .cls-14, .cls-21 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-44 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-45 {
+        fill: #cbcbcb;
+      }
+
+      .cls-16, .cls-23, .cls-24 {
+        stroke-width: 1.5px;
+      }
+
+      .cls-46 {
+        fill: #b3b3b3;
+      }
+
+      .cls-23 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-24 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-17, .cls-20 {
+        stroke: #03af7a;
+      }
+
+      .cls-31 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-19 {
+        stroke: #b4b4b4;
+        stroke-width: 4px;
+      }
+
+      .cls-20 {
+        stroke-dasharray: 8 6;
+      }
+
+      .cls-20, .cls-21 {
+        stroke-width: 2px;
+      }
+
+      .cls-36 {
+        font-size: 26px;
+      }
+
+      .cls-47 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-22 {
+        stroke-width: 6px;
+      }
+
+      .cls-7 {
+        font-family: A-SOTCenturyStd-Italic, 'UXLYT J+ A';
+        font-style: italic;
+      }
+
+      .cls-48 {
+        letter-spacing: 0em;
+      }
+
+      .cls-49 {
+        fill: #cfebfa;
+      }
+
+      .cls-50 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <symbol id="logo_suken" viewBox="0 0 83.2 15.25">
+      <g>
+        <path d="M0,7.82C0,4.53,2.59,1.79,5.9,1.79s6.02,2.65,6.02,6.03-2.74,6.03-6.03,6.03S0,11.09,0,7.82ZM11.28,7.82c0-3.02-2.42-5.41-5.38-5.41S.62,4.9.62,7.82s2.43,5.39,5.38,5.39,5.28-2.48,5.28-5.39ZM8.78,6.34l-.45.13c-.41-.93-1.23-1.95-2.35-1.95-1.49,0-1.82,1.89-1.82,3.04,0,2.37,1.18,3.34,2.27,3.34.98,0,1.58-.67,2.09-1.39l.26.18c-.67,1.18-1.58,1.97-3.01,1.97-1.95,0-3.31-1.61-3.31-3.5,0-2.03,1.36-4.02,3.38-4.02.35,0,.64.08.9.16.24.08.45.16.64.16.26,0,.5-.11.72-.22l.1-.05.59,2.16Z"/>
+        <path d="M35.01,2.45v1.65h-.66c-.03.93-.14,4.5-1.66,7.01,1.06,1.42,2.18,2.13,2.67,2.45l-1.04,1.49c-.7-.48-1.71-1.2-2.69-2.5-1.33,1.42-2.46,2.06-3.07,2.42l-1.17-1.5-.67,1.07c-.43-.24-.88-.5-1.81-.96-.69.48-1.92,1.1-4.1,1.68l-.72-1.44c1.22-.18,2.19-.42,3.23-.94-1.28-.53-2.1-.72-2.58-.85.38-.53.72-.99,1.17-2.05h-1.82v-1.39h2.35c.18-.53.26-.82.35-1.12l.7.14v-2.51c-.93,1.07-1.65,1.78-2.67,2.35l-1.06-1.18c1.31-.64,2.46-1.73,2.9-2.22h-2.58v-1.26h1.18c-.19-.78-.46-1.44-.77-2.08l1.41-.48c.48,1.1.64,1.81.74,2.22l-1.1.34h1.95V.1h1.49v2.67h1.94l-1.41-.4c.45-.94.5-1.07.93-2.27l1.49.37c-.37,1.01-.45,1.2-.99,2.3h1.01v1.26h-2.4c.83.7,1.12.96,1.95,1.34l-.99,1.22c-.69-.46-.99-.78-1.52-1.39v2.42h-1.39l.74.14c-.11.4-.16.54-.26.82h4.05v1.39h-.82c-.26.75-.61,1.63-1.25,2.48.51.24,1.31.61,1.52.7l-.16.26c1.02-.34,2.29-.99,3.34-2.26-.9-1.76-1.25-3.98-1.34-4.77-.38.69-.59.94-.86,1.31l-1.25-1.18c1.46-2.11,2.06-4.35,2.4-6.51l1.63.29c-.13.98-.24,1.52-.4,2.16h4.06ZM23.55,9.97c-.26.61-.45.98-.62,1.31.91.29,1.31.42,1.76.58.67-.75.9-1.44,1.04-1.89h-2.18ZM30.54,4.1c.05.66.29,3.49,1.2,5.46.45-1.02.98-2.82,1.02-5.46h-2.22Z"/>
+        <path d="M41.45,5.31v9.12h-4.4v-5.66c-.24.34-.34.45-.64.77l-.69-1.89c1.28-1.65,1.76-2.99,1.92-5.3h-1.65V.8h5.79v1.55h-2.59c-.08,1.2-.21,1.89-.53,2.96h2.78ZM40.03,6.78h-1.51v6.16h1.51v-6.16ZM43.68,2.35h-1.25V.8h8.4v1.55h-1.54v3.76h1.78v1.57h-1.78v7.42h-1.65v-7.42h-2.34v1.39c0,2.22-.4,4.54-2.05,6.03l-1.47-1.17c.51-.5,1.89-1.82,1.89-4.99v-1.26h-1.54v-1.57h1.54v-3.76ZM45.31,6.11h2.34v-3.76h-2.34v3.76Z"/>
+        <path d="M54.85,1.26v4.35h3.81V.11h1.7v5.5h3.86V1.26h1.73v5.95h-5.58v5.94h4.38v-4.94h1.71v6.54h-13.87v-6.54h1.7v4.94h4.38v-5.94h-5.52V1.26h1.71Z"/>
+        <path d="M70.35,9.22c-.13,1.97-.37,4.26-1.18,5.92l-1.39-1.12c.38-.78,1.04-2.18,1.04-6.74V.34h1.62v3.89h1.46V.06h1.57v4.16h.69v1.57h-3.71v1.54c0,.13-.02.24-.02.32h2.94v7.49h-1.57v-5.92h-1.44ZM82.7,4.66c-.16,1.46-.56,4.5-2.05,6.96.91.96,1.81,1.54,2.54,1.98l-1.01,1.54c-.66-.5-1.6-1.23-2.53-2.22-1.04,1.17-2.03,1.79-2.72,2.22l-1.09-1.54c.61-.3,1.73-.85,2.8-1.98-1.23-1.84-1.65-3.6-1.9-4.78l1.54-.27c.13.72.38,2.19,1.34,3.73.42-.72.93-1.76,1.26-4.11h-4.53v1.98c0,3.87-.78,5.66-1.66,6.98l-1.25-1.14c.56-.85,1.33-1.98,1.33-5.98V.69h8.27v1.62h-6.69v2.35h6.34Z"/>
+      </g>
+    </symbol>
+    <symbol id="pT図" viewBox="0 0 460 500">
+      <g>
+        <g>
+          <text class="cls-7" transform="translate(16.23 142.86)"><tspan x="0" y="0">p</tspan></text>
+          <text class="cls-2" transform="translate(20.95 86.56)"><tspan x="0" y="0">圧力</tspan></text>
+        </g>
+        <text class="cls-1" transform="translate(344.8 429.84)"><tspan x="0" y="0">絶対温度</tspan></text>
+        <text class="cls-7" transform="translate(423.89 429.84)"><tspan x="0" y="0">T</tspan></text>
+        <g>
+          <polyline class="cls-11" points="40 91.16 40 440 438.84 440"/>
+          <polygon points="36.34 93.66 40 80 43.66 93.66 36.34 93.66"/>
+          <polygon points="436.34 443.66 450 440 436.34 436.34 436.34 443.66"/>
+        </g>
+        <rect class="cls-10" width="460" height="500"/>
+      </g>
+    </symbol>
+    <symbol id="_一時停止-valid" data-name="一時停止-valid" viewBox="0 0 146 48">
+      <g>
+        <rect class="cls-33" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-8" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-42" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14C146,6.3,139.7,0,132,0h0Z"/>
+        </g>
+        <rect class="cls-10" width="146" height="48"/>
+        <g>
+          <rect class="cls-42" x="25.75" y="15" width="5" height="13"/>
+          <rect class="cls-42" x="33.75" y="15" width="5" height="13"/>
+          <text class="cls-6" transform="translate(48.26 28.98)"><tspan x="0" y="0">一時停止</tspan></text>
+        </g>
+        <rect class="cls-10" width="146" height="48"/>
+        <rect class="cls-10" width="146" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_冷却する-invaild" data-name="冷却する-invaild" viewBox="0 0 130 48">
+      <g id="_減圧する-invalid" data-name="減圧する-invalid">
+        <rect class="cls-45" y="4" width="130" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-28" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-46" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+        </g>
+        <rect class="cls-10" y="0" width="130" height="48"/>
+        <text class="cls-5" transform="translate(29 28.98)"><tspan x="0" y="0">冷却する</tspan></text>
+        <rect class="cls-10" y="0" width="130" height="48"/>
+        <rect class="cls-10" y="0" width="130" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_加熱する-invaild" data-name="加熱する-invaild" viewBox="0 0 130 48">
+      <g id="_加圧する-invalid" data-name="加圧する-invalid">
+        <g id="_最初に戻る-invalid" data-name="最初に戻る-invalid">
+          <rect class="cls-45" y="4" width="130" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-28" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-46" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+          <rect class="cls-10" y="0" width="130" height="48"/>
+          <text class="cls-5" transform="translate(29 28.98)"><tspan x="0" y="0">加熱する</tspan></text>
+          <rect class="cls-10" y="0" width="130" height="48"/>
+          <rect class="cls-10" y="0" width="130" height="48"/>
+        </g>
+      </g>
+    </symbol>
+    <clipPath id="clippath-8">
+      <rect class="cls-10" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し戻る" data-name="少し戻る" viewBox="0 0 44 48">
+      <g class="cls-43">
+        <g>
+          <rect class="cls-35" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-8" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-42" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+          </g>
+        </g>
+        <path class="cls-42" d="M25.85,29.6c1.46.77,2.65.05,2.65-1.6v-12c0-1.65-1.19-2.37-2.65-1.6l-11.7,6.19c-1.46.77-1.46,2.04,0,2.81l11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-7">
+      <rect class="cls-10" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し進む-valid" data-name="少し進む-valid" viewBox="0 0 44 48">
+      <g class="cls-26">
+        <rect class="cls-35" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-8" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-42" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+        </g>
+        <path class="cls-42" d="M18.15,29.6c-1.46.77-2.65.05-2.65-1.6v-12c0-1.65,1.19-2.37,2.65-1.6l11.7,6.19c1.46.77,1.46,2.04,0,2.81l-11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-4">
+      <rect class="cls-10" y="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-10" y="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-6">
+      <rect class="cls-10" y="0" width="146" height="48"/>
+    </clipPath>
+    <symbol id="_最初に戻る-valid" data-name="最初に戻る-valid" viewBox="0 0 146 48">
+      <g class="cls-27">
+        <g class="cls-41">
+          <rect class="cls-45" y="4" width="146" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-8" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-42" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+        </g>
+        <text class="cls-6" transform="translate(39.5 28.98)"><tspan x="0" y="0">最初に戻る</tspan></text>
+        <g class="cls-25">
+          <path class="cls-14" d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"/>
+          <polygon class="cls-42" points="26.68 22.55 19.31 16.44 28.28 13.11 26.68 22.55"/>
+        </g>
+      </g>
+    </symbol>
+    <radialGradient id="radial-gradient" cx="-16265.37" cy="-12474.89" fx="-16265.37" fy="-12474.89" r="12.99" gradientTransform="translate(5821.9336 4471.0819) scale(.3579)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9ebf6"/>
+      <stop offset=".02" stop-color="#cbdaed"/>
+      <stop offset=".06" stop-color="#95bddf"/>
+      <stop offset=".1" stop-color="#67a4d2"/>
+      <stop offset=".14" stop-color="#4290c8"/>
+      <stop offset=".18" stop-color="#2580c0"/>
+      <stop offset=".22" stop-color="#1075ba"/>
+      <stop offset=".26" stop-color="#046eb7"/>
+      <stop offset=".3" stop-color="#006cb6"/>
+      <stop offset="1" stop-color="#00559b"/>
+    </radialGradient>
+    <symbol id="_粒子" data-name="粒子" viewBox="0 0 8 8">
+      <path class="cls-38" d="M8,4.01c0,2.2-1.79,3.99-4,3.99C1.79,8,0,6.21,0,3.99,0,1.78,1.79,0,4,0c2.21,0,3.99,1.78,4,4.01Z"/>
+    </symbol>
+    <clipPath id="clippath">
+      <rect class="cls-10" x="572" y="114" width="380" height="360"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-10" x="72" y="114" width="380" height="360"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-10" x="312" y="114" width="140" height="360"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-10" x="812" y="114" width="140" height="360"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="110" y1="140.75" x2="290" y2="140.75" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#666"/>
+      <stop offset=".25" stop-color="#a6a6a6"/>
+      <stop offset="1" stop-color="#666"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="610" x2="790" xlink:href="#linear-gradient"/>
+  </defs>
+  <g class="cls-40">
+    <g id="copyright">
+      <use width="83.2" height="15.25" transform="translate(32 598.75)" xlink:href="#logo_suken"/>
+    </g>
+    <g id="graph-symbol">
+      <g class="cls-50">
+        <line class="cls-20" x1="572" y1="474" x2="962" y2="184"/>
+      </g>
+      <g class="cls-39">
+        <line class="cls-20" x1="72" y1="474" x2="462" y2="184"/>
+      </g>
+      <text class="cls-36" transform="translate(342.16 103.1)"><tspan x="0" y="0">理想気体</tspan></text>
+      <text class="cls-36" transform="translate(842.16 103.1)"><tspan x="0" y="0">実在気体</tspan></text>
+      <use width="460" height="500" transform="translate(32 34)" xlink:href="#pT図"/>
+      <use width="460" height="500" transform="translate(532 34)" xlink:href="#pT図"/>
+      <g class="cls-47">
+        <line class="cls-17" x1="72" y1="474" x2="462" y2="184"/>
+      </g>
+      <g class="cls-44">
+        <line class="cls-17" x1="572" y1="474" x2="962" y2="184"/>
+      </g>
+    </g>
+    <g id="other">
+      <g>
+        <line class="cls-18" x1="752" y1="474" x2="752" y2="114"/>
+        <circle cx="752" cy="474" r="4"/>
+        <text class="cls-3" transform="translate(736 498.51)"><tspan x="0" y="0">沸点</tspan></text>
+      </g>
+      <g>
+        <line class="cls-18" x1="312" y1="474" x2="312" y2="295.54"/>
+        <circle cx="312" cy="474" r="4"/>
+      </g>
+      <g>
+        <line class="cls-18" x1="812" y1="474" x2="812" y2="295.54"/>
+        <circle cx="812" cy="474" r="4"/>
+      </g>
+      <path class="cls-49" d="M290,145v118c0,6.6-5.4,12-12,12H122c-6.6,0-12-5.4-12-12v-118"/>
+      <rect class="cls-24" x="110" y="136.5" width="180" height="8.5"/>
+      <g>
+        <path class="cls-9" d="M290,80v183c0,6.6-5.4,12-12,12H122c-6.6,0-12-5.4-12-12V80"/>
+        <path class="cls-19" d="M290,80v183c0,6.6-5.4,12-12,12H122c-6.6,0-12-5.4-12-12V80"/>
+      </g>
+      <use width="8" height="8" transform="translate(139.78 159.42)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(173.97 169.06)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(209.78 167.22)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(261.84 172.93)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(198.3 196.88)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(169.33 234.39)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(209.09 234.93)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(238.93 229.19)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(260.64 247.24)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(234.22 183.16)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(134.96 204.17)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(139.09 249.85)" xlink:href="#_粒子"/>
+      <path class="cls-49" d="M790,145v118c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-118"/>
+      <rect class="cls-23" x="610" y="136.5" width="180" height="8.5"/>
+      <g>
+        <path class="cls-9" d="M790,80v183c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12V80"/>
+        <path class="cls-19" d="M790,80v183c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12V80"/>
+      </g>
+      <use width="8" height="8" transform="translate(639.78 159.42)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(673.97 169.06)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(709.78 167.22)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(761.84 172.93)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(698.3 196.88)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(669.33 234.39)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(709.09 234.93)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(738.93 229.19)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(760.64 247.24)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(734.22 183.16)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(634.96 204.17)" xlink:href="#_粒子"/>
+      <use width="8" height="8" transform="translate(639.09 249.85)" xlink:href="#_粒子"/>
+    </g>
+    <g id="buttons-2" data-name="buttons">
+      <use width="146" height="48" transform="translate(846 566)" xlink:href="#_最初に戻る-valid"/>
+      <use width="146" height="48" transform="translate(547 566)" xlink:href="#_一時停止-valid"/>
+      <use width="44" height="48" transform="translate(713 566)" xlink:href="#_少し進む-valid"/>
+      <use width="44" height="48" transform="translate(483 566)" xlink:href="#_少し戻る"/>
+      <use width="130" height="48" transform="translate(295 566)" xlink:href="#_加熱する-invaild"/>
+      <use width="130" height="48" transform="translate(145 566)" xlink:href="#_冷却する-invaild"/>
+    </g>
+    <g id="Description">
+      <g>
+        <line class="cls-12" x1="952" y1="474" x2="952" y2="189.83"/>
+        <circle class="cls-30" cx="952" cy="474" r="4"/>
+      </g>
+      <g>
+        <line class="cls-12" x1="452" y1="474" x2="452" y2="189.83"/>
+        <circle class="cls-30" cx="452" cy="474" r="4"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="196.1" y1="129.32" x2="196.1" y2="106.5"/>
+        <polygon class="cls-30" points="201.09 127.87 196.1 136.5 191.12 127.87 201.09 127.87"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="721.54" y1="129.32" x2="721.54" y2="106.5"/>
+        <polygon class="cls-30" points="726.52 127.87 721.54 136.5 716.55 127.87 726.52 127.87"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="820.26" y1="373.07" x2="951.94" y2="373.07"/>
+        <polygon class="cls-30" points="821.72 378.06 813.09 373.07 821.72 368.08 821.72 378.06"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="320.11" y1="373.07" x2="451.79" y2="373.07"/>
+        <polygon class="cls-30" points="321.57 378.06 312.93 373.07 321.57 368.08 321.57 378.06"/>
+      </g>
+      <g>
+        <text class="cls-22" transform="translate(395.47 148.15)"><tspan class="cls-34"><tspan x="0" y="0">[容器のふた]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">ふたの位置を下げる</tspan></tspan></text>
+        <text class="cls-29" transform="translate(395.47 148.15)"><tspan class="cls-34"><tspan x="0" y="0">[容器のふた]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">ふたの位置を下げる</tspan></tspan></text>
+      </g>
+      <g>
+        <line class="cls-21" x1="276.26" y1="141.28" x2="387.43" y2="141.28"/>
+        <circle class="cls-30" cx="276.26" cy="141.28" r="3.76"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="631.94" y1="141.28" x2="497.26" y2="141.28"/>
+        <circle class="cls-30" cx="631.94" cy="141.28" r="3.76"/>
+      </g>
+      <rect class="cls-21" x="117.5" y="154.71" width="165" height="110" rx="10" ry="10"/>
+      <rect class="cls-21" x="617.5" y="154.71" width="165" height="110" rx="10" ry="10"/>
+      <g>
+        <text class="cls-22" transform="translate(365.88 191.96)"><tspan class="cls-34"><tspan x="0" y="0">[気体と粒子]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">ふたの位置がさがり容器の</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">体積も減る。</tspan></tspan><tspan class="cls-4"><tspan x="0" y="60">粒子は容器内を緩やかに移動する</tspan></tspan></text>
+        <text class="cls-29" transform="translate(365.88 191.96)"><tspan class="cls-34"><tspan x="0" y="0">[気体と粒子]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">ふたの位置がさがり容器の</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">体積も減る。</tspan></tspan><tspan class="cls-4"><tspan x="0" y="60">粒子は容器内を緩やかに移動する</tspan></tspan></text>
+      </g>
+      <line class="cls-21" x1="465.18" y1="187.87" x2="617.09" y2="187.87"/>
+      <line class="cls-21" x1="282.5" y1="187.87" x2="360.92" y2="187.87"/>
+      <g>
+        <text class="cls-22" transform="translate(856.52 304.74)"><tspan class="cls-34"><tspan x="0" y="0">[比例の線-実線]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">状態：表示</tspan></tspan></text>
+        <text class="cls-29" transform="translate(856.52 304.74)"><tspan class="cls-34"><tspan x="0" y="0">[比例の線-実線]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">状態：表示</tspan></tspan></text>
+      </g>
+      <g>
+        <text class="cls-22" transform="translate(140.78 408.68)"><tspan class="cls-34"><tspan x="0" y="0">[絶対温度の位置]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">位置を右側に移動</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">温度下降</tspan></tspan></text>
+        <text class="cls-29" transform="translate(140.78 408.68)"><tspan class="cls-34"><tspan x="0" y="0">[絶対温度の位置]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">位置を右側に移動</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">温度下降</tspan></tspan></text>
+      </g>
+      <g>
+        <polyline class="cls-21" points="853.75 263.37 889.88 263.37 889.88 285.29"/>
+        <circle class="cls-30" cx="853.75" cy="263.37" r="3.76"/>
+      </g>
+      <g>
+        <text class="cls-22" transform="translate(345.42 316.59)"><tspan class="cls-34"><tspan x="0" y="0">[比例の線-実線]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">状態：表示</tspan></tspan></text>
+        <text class="cls-29" transform="translate(345.42 316.59)"><tspan class="cls-34"><tspan x="0" y="0">[比例の線-実線]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">状態：表示</tspan></tspan></text>
+      </g>
+      <g>
+        <polyline class="cls-21" points="338.64 275.73 374.78 275.73 374.78 297.65"/>
+        <path class="cls-30" d="M338.64,279.49c-2.08,0-3.76-1.68-3.76-3.76s1.68-3.76,3.76-3.76,3.76,1.68,3.76,3.76-1.68,3.76-3.76,3.76Z"/>
+      </g>
+      <g>
+        <line class="cls-21" x1="312.23" y1="403.26" x2="272.87" y2="403.26"/>
+        <circle class="cls-30" cx="312.23" cy="403.26" r="3.76"/>
+      </g>
+      <g>
+        <text class="cls-22" transform="translate(640.55 408.68)"><tspan class="cls-34"><tspan x="0" y="0">[絶対温度の位置]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">位置を右側に移動</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">温度下降</tspan></tspan></text>
+        <text class="cls-29" transform="translate(640.55 408.68)"><tspan class="cls-34"><tspan x="0" y="0">[絶対温度の位置]</tspan></tspan><tspan class="cls-4"><tspan x="0" y="20">位置を右側に移動</tspan></tspan><tspan class="cls-4"><tspan x="0" y="40">温度下降</tspan></tspan></text>
+      </g>
+      <g>
+        <line class="cls-21" x1="812" y1="403.26" x2="772.64" y2="403.26"/>
+        <circle class="cls-30" cx="812" cy="403.26" r="3.76"/>
+      </g>
+      <rect class="cls-16" x="110" y="106.5" width="180" height="8.5"/>
+      <rect class="cls-16" x="610" y="106.5" width="180" height="8.5"/>
+    </g>
+    <g id="Scenes">
+      <g>
+        <text class="cls-13" transform="translate(32 41.83)"><tspan x="0" y="0">場面-03</tspan></text>
+        <text class="cls-32" transform="translate(32 41.83)"><tspan x="0" y="0">場面-03</tspan></text>
+      </g>
+      <g>
+        <rect class="cls-31" x="465.81" y="15.43" width="390.92" height="38.21"/>
+        <text class="cls-15" transform="translate(466.81 42.23)"><tspan x="0" y="0">冷却アニメーション再生中</tspan><tspan class="cls-37" x="360" y="0">..</tspan><tspan class="cls-48" x="378.78" y="0">.</tspan></text>
+        <text class="cls-32" transform="translate(466.81 42.23)"><tspan x="0" y="0">冷却アニメーション再生中</tspan><tspan class="cls-37" x="360" y="0">..</tspan><tspan class="cls-48" x="378.78" y="0">.</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 648">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d6eefb;
+      }
+
+      .cls-2 {
+        fill: #fafafa;
+      }
+
+      .cls-3 {
+        letter-spacing: .25em;
+      }
+
+      .cls-4 {
+        stroke: #717071;
+        stroke-width: 7px;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12 {
+        fill: none;
+      }
+
+      .cls-4, .cls-10 {
+        stroke-linecap: square;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-16 {
+        fill: #f2f2f2;
+      }
+
+      .cls-17 {
+        clip-path: url(#clippath-9);
+      }
+
+      .cls-18 {
+        clip-path: url(#clippath-10);
+      }
+
+      .cls-19 {
+        fill: #cbcbcb;
+      }
+
+      .cls-20, .cls-21 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        stroke: red;
+      }
+
+      .cls-5, .cls-8, .cls-9, .cls-11 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-22 {
+        fill: #c8e8f9;
+      }
+
+      .cls-23 {
+        fill: #ccc;
+      }
+
+      .cls-24, .cls-25 {
+        fill: #b2b2b2;
+      }
+
+      .cls-24, .cls-26, .cls-21, .cls-27 {
+        font-family: rounded-mplus-1p-medium, 'Rounded M+ 1p';
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .cls-28, .cls-29, .cls-30, .cls-31, .cls-32 {
+        fill: red;
+      }
+
+      .cls-33 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-34 {
+        fill: #dcf0fb;
+      }
+
+      .cls-29, .cls-7, .cls-32, .cls-12 {
+        font-family: rounded-mplus-1p-bold, 'Rounded M+ 1p';
+        font-weight: 700;
+      }
+
+      .cls-29, .cls-12 {
+        font-size: 20px;
+      }
+
+      .cls-35 {
+        isolation: isolate;
+      }
+
+      .cls-7 {
+        stroke-width: 10px;
+      }
+
+      .cls-7, .cls-9, .cls-12 {
+        stroke: #fff;
+      }
+
+      .cls-7, .cls-32 {
+        font-size: 30px;
+      }
+
+      .cls-7, .cls-12 {
+        stroke-linejoin: round;
+      }
+
+      .cls-36 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-30 {
+        font-family: KozGoPr6N-Regular-90ms-RKSJ-H, 'Kozuka Gothic Pr6N';
+        font-size: 12px;
+      }
+
+      .cls-26, .cls-37 {
+        fill: #0b89dd;
+      }
+
+      .cls-38 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-8 {
+        stroke: #0b89dd;
+      }
+
+      .cls-8, .cls-9, .cls-11, .cls-12 {
+        stroke-width: 3px;
+      }
+
+      .cls-39 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-40 {
+        fill: #cbcbcb;
+      }
+
+      .cls-41, .cls-27 {
+        fill: #b3b3b3;
+      }
+
+      .cls-31 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-42 {
+        fill: #bae2f8;
+      }
+
+      .cls-43 {
+        fill: #e3f3fc;
+      }
+
+      .cls-10 {
+        stroke: #b4b4b4;
+        stroke-width: 4px;
+      }
+
+      .cls-44 {
+        fill: #ccc;
+      }
+
+      .cls-45 {
+        fill: #c1e5f9;
+      }
+
+      .cls-46 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-47 {
+        fill: #cfebfa;
+      }
+
+      .cls-48 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-11 {
+        stroke: #b2b2b2;
+      }
+    </style>
+    <symbol id="_一時停止-invalid" data-name="一時停止-invalid" viewBox="0 0 146 48">
+      <g id="_一時停止-valid" data-name="一時停止-valid">
+        <rect class="cls-40" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-16" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-41" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14C146,6.3,139.7,0,132,0h0Z"/>
+        </g>
+        <rect class="cls-6" width="146" height="48"/>
+        <g>
+          <rect class="cls-41" x="25.75" y="15" width="5" height="13"/>
+          <rect class="cls-41" x="33.75" y="15" width="5" height="13"/>
+          <text class="cls-27" transform="translate(48.26 28.98)"><tspan x="0" y="0">一時停止</tspan></text>
+        </g>
+        <rect class="cls-6" width="146" height="48"/>
+        <rect class="cls-6" width="146" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_一時停止-push" data-name="一時停止-push" viewBox="0 0 146 48">
+      <g>
+        <rect class="cls-37" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+        <rect class="cls-6" width="146" height="48"/>
+        <g>
+          <rect class="cls-20" x="25.75" y="19" width="5" height="13"/>
+          <rect class="cls-20" x="33.75" y="19" width="5" height="13"/>
+          <text class="cls-21" transform="translate(48.26 32.98)"><tspan x="0" y="0">一時停止</tspan></text>
+        </g>
+        <rect class="cls-6" width="146" height="48"/>
+        <rect class="cls-6" width="146" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_一時停止-valid-2" data-name="一時停止-valid" viewBox="0 0 146 48">
+      <g>
+        <rect class="cls-19" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-2" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-37" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14C146,6.3,139.7,0,132,0h0Z"/>
+        </g>
+        <rect class="cls-6" width="146" height="48"/>
+        <g>
+          <rect class="cls-37" x="25.75" y="15" width="5" height="13"/>
+          <rect class="cls-37" x="33.75" y="15" width="5" height="13"/>
+          <text class="cls-26" transform="translate(48.26 28.98)"><tspan x="0" y="0">一時停止</tspan></text>
+        </g>
+        <rect class="cls-6" width="146" height="48"/>
+        <rect class="cls-6" width="146" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_再開-push" data-name="再開-push" viewBox="0 0 146 48">
+      <g>
+        <g id="_最初に戻る-invalid" data-name="最初に戻る-invalid">
+          <rect class="cls-6" width="146" height="48"/>
+        </g>
+        <g id="_一時停止-off" data-name="一時停止-off">
+          <rect class="cls-37" y="4" width="146" height="44" rx="14" ry="14"/>
+        </g>
+        <g>
+          <polygon class="cls-20" points="41.7 33.99 41.7 18.99 54.7 26.49 41.7 33.99"/>
+          <text class="cls-21" transform="translate(63.8 32.98)"><tspan class="cls-3" x="0" y="0">再</tspan><tspan x="22.5" y="0">開</tspan></text>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_再開-valid" data-name="再開-valid" viewBox="0 0 146 48">
+      <g>
+        <g id="_最初に戻る-invalid-2" data-name="最初に戻る-invalid">
+          <rect class="cls-44" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+        </g>
+        <g id="_一時停止-off-2" data-name="一時停止-off">
+          <g>
+            <rect class="cls-2" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-37" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+        </g>
+        <g>
+          <polygon class="cls-37" points="41.7 29.99 41.7 14.99 54.7 22.49 41.7 29.99"/>
+          <text class="cls-26" transform="translate(63.8 28.98)"><tspan class="cls-3" x="0" y="0">再</tspan><tspan x="22.5" y="0">開</tspan></text>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_冷却する-invaild" data-name="冷却する-invaild" viewBox="0 0 130 48">
+      <g id="_減圧する-invalid" data-name="減圧する-invalid">
+        <rect class="cls-40" y="4" width="130" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-16" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-41" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+        </g>
+        <rect class="cls-6" y="0" width="130" height="48"/>
+        <text class="cls-24" transform="translate(29 28.98)"><tspan x="0" y="0">冷却する</tspan></text>
+        <rect class="cls-6" y="0" width="130" height="48"/>
+        <rect class="cls-6" y="0" width="130" height="48"/>
+      </g>
+    </symbol>
+    <symbol id="_冷却する-push" data-name="冷却する-push" viewBox="0 0 130 48">
+      <g id="_減圧する-push" data-name="減圧する-push">
+        <g id="_最初に戻る-push" data-name="最初に戻る-push">
+          <g id="_最初に戻る-valid" data-name="最初に戻る-valid">
+            <rect class="cls-37" y="4" width="130" height="44" rx="14" ry="14"/>
+            <rect class="cls-6" width="130" height="48"/>
+            <text class="cls-21" transform="translate(29 32.98)"><tspan x="0" y="0">冷却する</tspan></text>
+            <rect class="cls-6" width="130" height="48"/>
+            <rect class="cls-6" width="130" height="48"/>
+          </g>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_冷却する-vaild" data-name="冷却する-vaild" viewBox="0 0 130 48">
+      <g id="_減圧する-valid" data-name="減圧する-valid">
+        <g id="_最初に戻る-valid-2" data-name="最初に戻る-valid">
+          <rect class="cls-40" x="0" y="4" width="130" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-2" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-37" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+          <text class="cls-26" transform="translate(29 28.98)"><tspan x="0" y="0">冷却する</tspan></text>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_加熱する-invaild" data-name="加熱する-invaild" viewBox="0 0 130 48">
+      <g id="_加圧する-invalid" data-name="加圧する-invalid">
+        <g id="_最初に戻る-invalid-3" data-name="最初に戻る-invalid">
+          <rect class="cls-40" y="4" width="130" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-16" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-41" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+          <text class="cls-24" transform="translate(29 28.98)"><tspan x="0" y="0">加熱する</tspan></text>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+          <rect class="cls-6" y="0" width="130" height="48"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_加熱する-push" data-name="加熱する-push" viewBox="0 0 130 48">
+      <g id="_加圧する-push" data-name="加圧する-push">
+        <g id="_最初に戻る-push-2" data-name="最初に戻る-push">
+          <g id="_最初に戻る-valid-3" data-name="最初に戻る-valid">
+            <rect class="cls-37" y="4" width="130" height="44" rx="14" ry="14"/>
+            <rect class="cls-6" width="130" height="48"/>
+            <text class="cls-21" transform="translate(29 32.98)"><tspan x="0" y="0">加熱する</tspan></text>
+            <rect class="cls-6" width="130" height="48"/>
+            <rect class="cls-6" width="130" height="48"/>
+          </g>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_加熱する-vaild" data-name="加熱する-vaild" viewBox="0 0 130 48">
+      <g id="_加圧する-valid" data-name="加圧する-valid">
+        <g id="_最初に戻る-valid-4" data-name="最初に戻る-valid">
+          <rect class="cls-40" x="0" y="4" width="130" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-2" x="1.5" y="1.5" width="127" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-37" d="M116,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h102M116,0H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h102c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+          <rect class="cls-6" x="0" y="0" width="130" height="48"/>
+          <text class="cls-26" transform="translate(29 28.98)"><tspan x="0" y="0">加熱する</tspan></text>
+          <rect class="cls-6" x="0" y="0" width="130" height="48"/>
+          <rect class="cls-6" x="0" y="0" width="130" height="48"/>
+        </g>
+      </g>
+    </symbol>
+    <clipPath id="clippath-9">
+      <rect class="cls-6" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し戻る" data-name="少し戻る" viewBox="0 0 44 48">
+      <g class="cls-17">
+        <g>
+          <rect class="cls-23" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-2" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-37" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+          </g>
+        </g>
+        <path class="cls-37" d="M25.85,29.6c1.46.77,2.65.05,2.65-1.6v-12c0-1.65-1.19-2.37-2.65-1.6l-11.7,6.19c-1.46.77-1.46,2.04,0,2.81l11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-7">
+      <rect class="cls-6" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し戻る-invalid" data-name="少し戻る-invalid" viewBox="0 0 44 48">
+      <g class="cls-14">
+        <g>
+          <rect class="cls-23" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-16" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-41" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+          </g>
+        </g>
+        <path class="cls-41" d="M25.85,29.6c1.46.77,2.65.05,2.65-1.6v-12c0-1.65-1.19-2.37-2.65-1.6l-11.7,6.19c-1.46.77-1.46,2.04,0,2.81l11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <symbol id="_少し戻る-push" data-name="少し戻る-push" viewBox="0 0 44 48">
+      <g id="_少し戻る-2" data-name="少し戻る">
+        <rect class="cls-37" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+        <path class="cls-20" d="M25.85,33.6c1.46.77,2.65.05,2.65-1.6v-12c0-1.65-1.19-2.37-2.65-1.6l-11.7,6.19c-1.46.77-1.46,2.04,0,2.81l11.7,6.19Z"/>
+        <rect class="cls-6" width="44" height="48"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-6">
+      <rect class="cls-6" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し進む-invalid" data-name="少し進む-invalid" viewBox="0 0 44 48">
+      <g class="cls-13">
+        <rect class="cls-23" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-16" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-41" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+        </g>
+        <path class="cls-41" d="M18.15,29.6c-1.46.77-2.65.05-2.65-1.6v-12c0-1.65,1.19-2.37,2.65-1.6l11.7,6.19c1.46.77,1.46,2.04,0,2.81l-11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-10">
+      <rect class="cls-6" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し進む-push" data-name="少し進む-push" viewBox="0 0 44 48.09">
+      <g class="cls-18">
+        <rect class="cls-23" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+        <rect class="cls-37" x="0" y="4.09" width="44" height="44" rx="14" ry="14"/>
+        <path class="cls-2" d="M18.15,33.69c-1.46.77-2.65.05-2.65-1.6v-12c0-1.65,1.19-2.37,2.65-1.6l11.7,6.19c1.46.77,1.46,2.04,0,2.81l-11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-8">
+      <rect class="cls-6" width="44" height="48"/>
+    </clipPath>
+    <symbol id="_少し進む-valid" data-name="少し進む-valid" viewBox="0 0 44 48">
+      <g class="cls-38">
+        <rect class="cls-23" x="0" y="4" width="44" height="44" rx="14" ry="14"/>
+        <g>
+          <rect class="cls-2" x="1.5" y="1.5" width="41" height="41" rx="12.5" ry="12.5"/>
+          <path class="cls-37" d="M30,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h16M30,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h16c7.7,0,14-6.3,14-14V14C44,6.3,37.7,0,30,0h0Z"/>
+        </g>
+        <path class="cls-37" d="M18.15,29.6c-1.46.77-2.65.05-2.65-1.6v-12c0-1.65,1.19-2.37,2.65-1.6l11.7,6.19c1.46.77,1.46,2.04,0,2.81l-11.7,6.19Z"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath">
+      <rect class="cls-6" x="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-6" x="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-6" x="0" width="146" height="48"/>
+    </clipPath>
+    <symbol id="_最初に戻る-invalid-4" data-name="最初に戻る-invalid" viewBox="0 0 146 48">
+      <g class="cls-48">
+        <g class="cls-33">
+          <rect class="cls-40" x="0" y="4" width="146" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-16" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-41" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14C146,6.3,139.7,0,132,0h0Z"/>
+          </g>
+        </g>
+        <text class="cls-24" transform="translate(39.5 28.98)"><tspan x="0" y="0">最初に戻る</tspan></text>
+        <g class="cls-46">
+          <path class="cls-11" d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"/>
+          <polygon class="cls-25" points="26.68 22.55 19.31 16.44 28.28 13.11 26.68 22.55"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="_最初に戻る-push-3" data-name="最初に戻る-push" viewBox="0 0 146 48">
+      <g id="_最初に戻る-valid-5" data-name="最初に戻る-valid">
+        <rect class="cls-37" y="4" width="146" height="44" rx="14" ry="14"/>
+        <rect class="cls-6" width="146" height="48"/>
+        <text class="cls-21" transform="translate(39.5 32.98)"><tspan x="0" y="0">最初に戻る</tspan></text>
+        <path class="cls-9" d="M26.1,21.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"/>
+        <polygon class="cls-20" points="26.68 26.55 19.31 20.44 28.28 17.11 26.68 26.55"/>
+        <rect class="cls-6" width="146" height="48"/>
+        <rect class="cls-6" width="146" height="48"/>
+      </g>
+    </symbol>
+    <clipPath id="clippath-3">
+      <rect class="cls-6" y="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-6" y="0" width="146" height="48"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-6" y="0" width="146" height="48"/>
+    </clipPath>
+    <symbol id="_最初に戻る-valid-6" data-name="最初に戻る-valid" viewBox="0 0 146 48">
+      <g class="cls-39">
+        <g class="cls-15">
+          <rect class="cls-40" y="4" width="146" height="44" rx="14" ry="14"/>
+          <g>
+            <rect class="cls-2" x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5"/>
+            <path class="cls-37" d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"/>
+          </g>
+        </g>
+        <text class="cls-26" transform="translate(39.5 28.98)"><tspan x="0" y="0">最初に戻る</tspan></text>
+        <g class="cls-36">
+          <path class="cls-8" d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"/>
+          <polygon class="cls-37" points="26.68 22.55 19.31 16.44 28.28 13.11 26.68 22.55"/>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+  <g class="cls-35">
+    <g id="other">
+      <path class="cls-43" d="M614.18,367.13v148c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-148"/>
+      <path class="cls-34" d="M614.18,391.13v124c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-124"/>
+      <path class="cls-1" d="M614.18,415.13v100c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-100"/>
+      <path class="cls-47" d="M614.18,439.13v76c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-76"/>
+      <path class="cls-22" d="M614.18,463.13v52c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-52"/>
+      <path class="cls-45" d="M614.18,487.13v28c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-28"/>
+      <path class="cls-42" d="M614.18,507.13v10c0,5.5-5.4,10-12,10h-156c-6.6,0-12-4.5-12-10v-10"/>
+      <g>
+        <path class="cls-4" d="M614.18,332.13v183c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-183"/>
+        <path class="cls-10" d="M614.18,332.13v183c0,6.6-5.4,12-12,12h-156c-6.6,0-12-5.4-12-12v-183"/>
+      </g>
+    </g>
+    <g id="buttons-6" data-name="buttons">
+      <use width="146" height="48" transform="translate(498 150)" xlink:href="#_一時停止-push"/>
+      <use width="146" height="48" transform="translate(32 34)" xlink:href="#_最初に戻る-invalid-4"/>
+      <use width="146" height="48" transform="translate(32 92)" xlink:href="#_最初に戻る-valid-6"/>
+      <use width="146" height="48" transform="translate(32 150)" xlink:href="#_最初に戻る-push-3"/>
+      <use width="130" height="48" transform="translate(198 34)" xlink:href="#_加熱する-invaild"/>
+      <use width="130" height="48" transform="translate(198 92)" xlink:href="#_加熱する-vaild"/>
+      <use width="130" height="48" transform="translate(198 150)" xlink:href="#_加熱する-push"/>
+      <use width="130" height="48" transform="translate(348 34)" xlink:href="#_冷却する-invaild"/>
+      <use width="130" height="48" transform="translate(348 92)" xlink:href="#_冷却する-vaild"/>
+      <use width="130" height="48" transform="translate(348 150)" xlink:href="#_冷却する-push"/>
+      <use width="146" height="48" transform="translate(498 92)" xlink:href="#_一時停止-valid-2"/>
+      <use width="146" height="48" transform="translate(498 34)" xlink:href="#_一時停止-invalid"/>
+      <use width="44" height="48" transform="translate(915.71 34)" xlink:href="#_少し進む-invalid"/>
+      <use width="44" height="48" transform="translate(864 34)" xlink:href="#_少し戻る-invalid"/>
+      <use width="44" height="48" transform="translate(915.71 92)" xlink:href="#_少し進む-valid"/>
+      <use width="44" height="48" transform="translate(864 92)" xlink:href="#_少し戻る"/>
+      <use width="44" height="48.09" transform="translate(915.71 150)" xlink:href="#_少し進む-push"/>
+      <use width="44" height="48" transform="translate(864 150)" xlink:href="#_少し戻る-push"/>
+      <use width="146" height="48" transform="translate(664 92)" xlink:href="#_再開-valid"/>
+      <use width="146" height="48" transform="translate(664 150)" xlink:href="#_再開-push"/>
+    </g>
+    <g id="Description">
+      <g>
+        <line class="cls-5" x1="580.35" y1="372.57" x2="580.35" y2="386.78"/>
+        <path class="cls-28" d="M580.35,373.64l2.16,1.31.05-.07-1.4-3.52c-.27-1.23-.54-2.46-.81-3.68-.27,1.23-.54,2.46-.81,3.68l-1.4,3.52.04.07,2.17-1.31Z"/>
+        <path class="cls-28" d="M580.35,385.71l2.16-1.31.05.07-1.4,3.52c-.27,1.23-.54,2.46-.81,3.68-.27-1.23-.54-2.46-.81-3.68l-1.4-3.52.04-.07,2.17,1.31Z"/>
+      </g>
+      <text class="cls-30" transform="translate(544.72 383.62)"><tspan x="0" y="0">24 px</tspan></text>
+    </g>
+    <g id="Scenes">
+      <g>
+        <text class="cls-7" transform="translate(682.04 61.95)"><tspan x="0" y="0">ボタンなど</tspan></text>
+        <text class="cls-32" transform="translate(682.04 61.95)"><tspan x="0" y="0">ボタンなど</tspan></text>
+      </g>
+      <g>
+        <rect class="cls-31" x="350.19" y="545.12" width="342" height="26.14"/>
+        <text class="cls-12" transform="translate(351.19 563.32)"><tspan x="0" y="0">体積が圧縮された時の気体の色の変化</tspan></text>
+        <text class="cls-29" transform="translate(351.19 563.32)"><tspan x="0" y="0">体積が圧縮された時の気体の色の変化</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

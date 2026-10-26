@@ -176,8 +176,8 @@ img {
 }
 
 @font-face {
-    font-family: 'Rounded M+ 1p';
-    src: url(../font/rounded-mplus-1p-medium-sub.woff);
+    font-family: 'rounded-mplus-1p-regular';
+    src: url(../font/rounded-mplus-1p-regular-sub.woff);
 }
 
 @font-face {

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <title>等速円運動</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/main.css?ts=20260908" />
+  <link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css?ts=20260908" />
+  <link rel="stylesheet" href="css/index.css?ts=20260908" />
+
+  <script src="js/jquery-3.2.1.min.js?ts=20260908" defer></script>
+  <script src="js/jquery-ui.min.js?ts=20260908" defer></script>
+  <script src="js/pinch.js?ts=20260908" defer></script>
+
+  <script src="js/lodash.min.js?ts=20260908" defer></script>
+  <script src="js/autoResize.js?ts=20260908" defer></script>
+  <script src="js/3D-1.0.2.js?ts=20260908" defer></script>
+  <script src="js/config.js?ts=20260908" defer></script>
+  <script src="js/snap.svg-min.js?ts=20260908" defer></script>
+
+  <script src="js/c04.js?ts=20260908" defer></script>
+</head>
+
+<body touch-action="none" oncontextmenu="return false">
+  <div id="overlay" style="width: 100%; height: 100%; z-index: -1; background-color: transparent; position: absolute">
+  </div>
+  <div id="divBody" style="position: relative; left: 0px; top: 0px; overflow: hidden">
+    <svg id="svg_root" width="1024" height="648" viewBox="0 0 1024 648" style="left: 0px">
+      <g transform="matrix(1,0,0,1,0,0)" id="background">
+        <rect id="rect-bg" width="1024" height="648" style="fill: none; opacity: 0; stroke: none" />
+      </g>
+
+      <defs>
+        <!-- Filter Shadow -->
+        <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+          <feOffset dx="0" dy="2.5" />
+          <feGaussianBlur result="blur" stdDeviation="0" />
+          <feFlood flood-color="#000" flood-opacity=".2" />
+          <feComposite in2="blur" operator="in" />
+          <feComposite in="SourceGraphic" />
+        </filter>
+
+        <!-- Checkbox Symbols -->
+        <symbol id="checkbox" viewBox="0 0 27 26.47">
+          <rect x="1.5" y="1.5" width="24" height="23.47" rx="3.5" ry="3.5" style="fill:#fff; stroke-width:0px;" />
+          <path
+            d="m22,3c1.08,0,2,.92,2,2v16.47c0,1.08-.92,2-2,2H5c-1.08,0-2-.92-2-2V5c0-1.08.92-2,2-2h17m0-3H5C2.25,0,0,2.25,0,5v16.47c0,2.75,2.25,5,5,5h17c2.75,0,5-2.25,5-5V5c0-2.75-2.25-5-5-5h0Z"
+            style="fill:#0b89dd; stroke-width:0px;" />
+          <polyline points="6.45 9.34 11.28 17.33 21.09 6.89"
+            style="fill:none; stroke:#fff; stroke-miterlimit:10; stroke-width:4px;" />
+        </symbol>
+
+        <symbol id="checkbox_-_checked" viewBox="0 0 27 26.47">
+          <rect x="1.5" y="1.5" width="24" height="23.47" rx="3.5" ry="3.5" style="fill:#fff; stroke-width:0px;" />
+          <path
+            d="m22,3c1.08,0,2,.92,2,2v16.47c0,1.08-.92,2-2,2H5c-1.08,0-2-.92-2-2V5c0-1.08.92-2,2-2h17m0-3H5C2.25,0,0,2.25,0,5v16.47c0,2.75,2.25,5,5,5h17c2.75,0,5-2.25,5-5V5c0-2.75-2.25-5-5-5h0Z"
+            style="fill:#0b89dd; stroke-width:0px;" />
+          <polyline points="6.45 9.34 11.28 17.33 21.09 6.89"
+            style="fill:none; stroke:#0b89dd; stroke-miterlimit:10; stroke-width:4px;" />
+        </symbol>
+
+        <!-- Button Symbols: 開始 (Start) -->
+        <symbol id="_開始-off_2" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#fafafa; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#0b89dd; stroke-width:0px;" />
+            <polygon points="19.31 28.96 19.31 14.96 34.81 21.96 19.31 28.96" style="fill:#0b89dd; stroke-width:0px;" />
+            <text transform="translate(51.36 28.98)"
+              style="fill:#0b89dd; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">開</tspan>
+              <tspan x="36" y="0">始</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <symbol id="_開始-on_2" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#0b89dd; stroke-width:0px;" />
+            <polygon points="19.31 32.96 19.31 18.96 34.81 25.96 19.31 32.96" style="fill:#fff; stroke-width:0px;" />
+            <text transform="translate(51.36 32.98)"
+              style="fill:#fff; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">開</tspan>
+              <tspan x="36" y="0">始</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <symbol id="_開始-invalid_2-2" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#f2f2f2; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#b3b3b3; stroke-width:0px;" />
+            <polygon points="19.31 28.96 19.31 14.96 34.81 21.96 19.31 28.96" style="fill:#b3b3b3; stroke-width:0px;" />
+            <text transform="translate(51.36 28.98)"
+              style="fill:#b3b3b3; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">開</tspan>
+              <tspan x="36" y="0">始</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <!-- Button Symbols: 一時停止 (Pause) -->
+        <symbol id="_一時停止-valid_2" viewBox="0 0 146 48">
+          <g>
+            <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#fafafa; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#0b89dd; stroke-width:0px;" />
+            <rect x="25.95" y="15.99" width="4" height="13" rx="1" ry="1" style="fill:#0b89dd; stroke-width:0px;" />
+            <rect x="32.95" y="15.99" width="4" height="13" rx="1" ry="1" style="fill:#0b89dd; stroke-width:0px;" />
+            <text transform="translate(48.05 28.98)"
+              style="fill:#0b89dd; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0">一時停止</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <symbol id="_一時停止-push_2" viewBox="0 0 146 48">
+          <g>
+            <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill:#0b89dd; stroke-width:0px;" />
+            <rect x="25.95" y="19.99" width="4" height="13" rx="1" ry="1" style="fill:#fff; stroke-width:0px;" />
+            <rect x="32.95" y="19.99" width="4" height="13" rx="1" ry="1" style="fill:#fff; stroke-width:0px;" />
+            <text transform="translate(48.05 32.98)"
+              style="fill:#fff; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0">一時停止</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <!-- Button Symbols: 再開 (Resume) -->
+        <symbol id="_再開-off_2" viewBox="0 0 146 48">
+          <g>
+            <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#fafafa; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#0b89dd; stroke-width:0px;" />
+            <polygon points="19.31 28.96 19.31 14.96 34.81 21.96 19.31 28.96" style="fill:#0b89dd; stroke-width:0px;" />
+            <text transform="translate(51.57 28.98)"
+              style="fill:#0b89dd; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">再</tspan>
+              <tspan x="36" y="0">開</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <symbol id="_再開-on_2" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#0b89dd; stroke-width:0px;" />
+            <polygon points="19.31 32.96 19.31 18.96 34.81 25.96 19.31 32.96" style="fill:#fff; stroke-width:0px;" />
+            <text transform="translate(51.39 32.98)"
+              style="fill:#fff; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">再</tspan>
+              <tspan x="36" y="0">開</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <symbol id="_再開-invalid_2" viewBox="0 0 146 48">
+          <g>
+            <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#f2f2f2; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#b3b3b3; stroke-width:0px;" />
+            <polygon points="19.31 28.96 19.31 14.96 34.81 21.96 19.31 28.96" style="fill:#b3b3b3; stroke-width:0px;" />
+            <text transform="translate(51.36 28.98)"
+              style="fill:#b3b3b3; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0" style="letter-spacing:1em;">再</tspan>
+              <tspan x="36" y="0">開</tspan>
+            </text>
+          </g>
+        </symbol>
+
+        <!-- Button Symbols: 最初に戻る (Reset) -->
+        <symbol id="_最初に戻る-off_2-7" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#fafafa; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#0b89dd; stroke-width:0px;" />
+            <text transform="translate(39.5 28.98)"
+              style="fill:#0b89dd; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0">最初に戻る</tspan>
+            </text>
+            <path d="m26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+              style="fill:none; stroke:#0b89dd; stroke-miterlimit:10; stroke-width:3px;" />
+            <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill:#0b89dd; stroke-width:0px;" />
+          </g>
+        </symbol>
+
+        <symbol id="_最初に戻る-on" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#0b89dd; stroke-width:0px;" />
+            <text transform="translate(39.5 32.98)"
+              style="fill:#fafafa; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0">最初に戻る</tspan>
+            </text>
+            <path d="m26.1,21.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+              style="fill:none; stroke:#fafafa; stroke-miterlimit:10; stroke-width:3px;" />
+            <polygon points="26.68 26.55 19.3 20.44 28.28 17.11 26.68 26.55" style="fill:#fafafa; stroke-width:0px;" />
+          </g>
+        </symbol>
+
+        <symbol id="_最初に戻る-invalid_2" viewBox="0 0 146 48">
+          <g>
+            <rect y="4" width="146" height="44" rx="14" ry="14" style="fill:#ccc; stroke-width:0px;" />
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill:#f2f2f2; stroke-width:0px;" />
+            <path
+              d="m132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118m0-3H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+              style="fill:#b3b3b3; stroke-width:0px;" />
+            <text transform="translate(39.5 28.98)"
+              style="fill:#b3b3b3; font-family:rounded-mplus-1p-medium, 'Rounded M+ 1p'; font-size:18px; font-weight:500;">
+              <tspan x="0" y="0">最初に戻る</tspan>
+            </text>
+            <path d="m26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+              style="fill:none; stroke:#b3b3b3; stroke-miterlimit:10; stroke-width:3px;" />
+            <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill:#b3b3b3; stroke-width:0px;" />
+          </g>
+        </symbol>
+
+        <marker id="arrowhead" markerWidth="18.21" markerHeight="11" refX="2" refY="3.2" orient="auto">
+          <polygon style="fill:#231815;" transform="scale(0.52 0.52)"
+            points="3.3 5.6, 0.01 0.2, 0.2 0.07, 9.01 3.57, 18.22 5.57, 9.01 7.57, 0.2 11.07, 0.01 10.97"></polygon>
+        </marker>
+      </defs>
+
+      <!-- Graph Layer: Coordinate Axes, Origin, Labels, Formulas -->
+      <g id="graph">
+        <!-- Formula Labels -->
+        <text transform="translate(63.08 597.42)" style="font-size:30px;">
+          <tspan x="0" y="0"
+            style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; letter-spacing:.12em;">y=r
+          </tspan>
+          <tspan x="68.61" y="0" style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std';">si</tspan>
+          <tspan x="91.62" y="0"
+            style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; letter-spacing:.12em;">n</tspan>
+          <tspan x="112.56" y="0" style="font-family:A-SOTGirishaStd-Italic, 'A-SukenOT Girisha Std';">x</tspan>
+          <tspan x="134.4" y="0" style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std';">t</tspan>
+        </text>
+        <text transform="translate(62.27 551.63)" style="font-size:30px;">
+          <tspan x="0" y="0"
+            style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; letter-spacing:.12em;">x=r
+          </tspan>
+          <tspan x="68.82" y="0"
+            style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; letter-spacing:0em;">co</tspan>
+          <tspan x="99.72" y="0"
+            style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; letter-spacing:.12em;">s</tspan>
+          <tspan x="117.51" y="0" style="font-family:A-SOTGirishaStd-Italic, 'A-SukenOT Girisha Std';">x</tspan>
+          <tspan x="139.35" y="0" style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std';">t
+          </tspan>
+        </text>
+
+        <!-- Origin Label O -->
+        <text transform="translate(466.01 314.13)"
+          style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size:40px;">
+          <tspan x="0" y="0">O</tspan>
+        </text>
+
+        <!-- X Axis -->
+        <g xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
+          <path
+            d="m817.61,300.93c3.08-5.24,4.44-6.8,6.08-6.8,1.04,0,2.08.84,2.08,1.92s-.76,2.16-2.8,2.48c-1.72.24-2.08.16-3,1.76l-1.88,3.28,1.04,5.84c.08.4.36,2.64.92,2.64.88,0,2.24-3.4,2.68-4.28l1.16.6c-.72,1.88-2.92,6.2-5.2,6.2-1.8,0-2.2-1.92-2.52-3.36l-.72-3.44-1.8,2.8c-1.08,1.68-2.56,4-4.84,4-1,0-2.08-.64-2.08-1.76s.76-2.32,3.16-2.4c1.4-.04,1.76,0,2.56-1.24l2.64-4.12-1-5.24c-.04-.4-.2-2.4-.84-2.4-.88,0-2.08,3.84-2.36,4.64l-1.28-.36c.6-1.92,3-7.56,5.36-7.56,1.6,0,1.8,1.88,2,3.08l.64,3.72Z"
+            style="stroke-width:0px;" />
+        </g>
+        <line x1="207.09" y1="277.22" x2="811.41" y2="277.22"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10; stroke-width:2px;" />
+        <path
+          d="m808.18,277.22l-3.94-6.49.22-.15,10.58,4.2c3.68.81,7.37,1.62,11.05,2.43-3.68.81-7.37,1.62-11.05,2.43l-10.58,4.2-.22-.11,3.94-6.52Z"
+          style="stroke-width:0px;" />
+
+        <!-- Y Axis -->
+        <g xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
+          <path
+            d="m489.61,37.53c1.16-2,3.68-6.72,3.68-8.88,0-2.04-1.08-2.76-1.08-4.16,0-1.12.8-2.2,1.96-2.2,1.68,0,2.2,1.72,2.2,3.16,0,3.88-3.84,10.96-5.88,14.4-2.16,3.6-6.6,10.12-11.32,10.12-1.2,0-2.52-.6-2.52-2,0-1.24,1.32-2,2.44-2,1,0,1.88.4,2.76.4,2.04,0,4.04-3.16,5.16-4.64l-2.56-14.44c-.08-.4-.12-1.6-.68-1.6-.88,0-1.64,3.08-2,3.76l-1.24-.36c.8-1.92,2.44-6.8,4.92-6.8,1.76,0,1.96,2.64,2.16,3.84l2,11.4Z"
+            style="stroke-width:0px;" />
+        </g>
+        <line x1="508.88" y1="520.73" x2="508.88" y2="36.4"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10; stroke-width:2px;" />
+        <path
+          d="m508.88,39.63l-6.49,3.94-.15-.22,4.2-10.58c.81-3.68,1.62-7.37,2.43-11.05.81,3.68,1.62,7.37,2.43,11.05l4.2,10.58-.11.22-6.52-3.94Z"
+          style="stroke-width:0px;" />
+
+        <!-- Axis Value Marks r, -r -->
+        <text transform="translate(698.16 310.67)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">r</tspan>
+        </text>
+        <text transform="translate(269.34 310.67)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">-r</tspan>
+        </text>
+        <text transform="translate(480.02 89.02)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">r</tspan>
+        </text>
+        <text transform="translate(447.62 485.51)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">-r</tspan>
+        </text>
+      </g>
+
+      <!-- Scrollbar Layer (Time t slider: t=0 -> 10) -->
+      <g id="scrollbar">
+        <text transform="translate(329.75 544.58)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">0</tspan>
+        </text>
+        <text id="label-t-max" transform="translate(660.75 544.58)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+          <tspan x="0" y="0">10</tspan>
+        </text>
+        <!-- Scale Ticks -->
+        <line x1="338.75" y1="551.84" x2="338.75" y2="566.84"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="372.75" y1="554.34" x2="372.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="406.75" y1="554.34" x2="406.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="440.75" y1="554.34" x2="440.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="474.75" y1="554.34" x2="474.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="508.75" y1="551.84" x2="508.75" y2="566.84"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="542.75" y1="554.34" x2="542.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="576.75" y1="554.34" x2="576.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="610.75" y1="554.34" x2="610.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="644.75" y1="554.34" x2="644.75" y2="564.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <line x1="678.75" y1="551.84" x2="678.75" y2="566.84"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+        <!-- Axis Line -->
+        <line x1="678.75" y1="559.34" x2="338.75" y2="559.34"
+          style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+
+        <text transform="translate(308.88 566.65)"
+          style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:30px;">
+          <tspan x="0" y="0">t</tspan>
+        </text>
+
+        <!-- Drag Slider Interactive Zone -->
+        <rect id="slider" class="slider-bar cursor-pointer" x="338.75" y="535" width="340" height="65"
+          style="fill: white; opacity: 0.001; stroke: none;" />
+
+        <!-- Drag Point Thumb -->
+        <g id="drag-point-container" transform="translate(0, 0)">
+          <path id="drag-point" class="slider-bar cursor-pointer"
+            d="m334.89,576.28c2.12-4.27,5.59-4.27,7.72,0l9.47,19.04c2.12,4.27.02,7.76-4.68,7.76h-17.3c-4.69,0-6.8-3.49-4.68-7.76l9.47-19.04Z"
+            style="fill:#0b89dd; filter:url(#drop-shadow-1); stroke-width:0px;" />
+        </g>
+      </g>
+
+      <!-- Geometry Objects: Circle Orbit, OP Segment, Omega T Arc & Label -->
+      <g id="object">
+        <!-- Main Circular Orbit (Radius r = 180, Center (508.88, 277.22)) -->
+        <circle cx="508.88" cy="277.22" r="180" style="fill:none; stroke:#231815; stroke-width:3px;" />
+
+        <!-- Connecting Line OP -->
+        <line id="lineOP" x1="508.88" y1="277.22" x2="508.88" y2="97.22"
+          style="fill:none; stroke:#231815; stroke-width:2px; visibility:hidden;" />
+
+        <!-- Angle Arc / Spiral Curve for omega*t -->
+        <polyline id="arrowAngle" points=""
+          style="fill:none; stroke:#231815; stroke-miterlimit:10; stroke-width:2px; visibility:hidden;" />
+        <polygon id="arrowheadAngle" points="" style="fill:#231815; stroke-width:0px; visibility:hidden;" />
+
+        <!-- Omega T Label -->
+        <g id="textOmegaT" style="visibility:hidden;">
+          <text transform="translate(0 0)" style="font-size:36px;">
+            <tspan x="0" y="0" style="font-family:A-SOTGirishaStd-Italic, 'A-SukenOT Girisha Std';">x
+            </tspan>
+            <tspan x="26.21" y="0" style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std';">t
+            </tspan>
+          </text>
+        </g>
+      </g>
+
+      <!-- Physical Arrows Layer: Velocity Vector (v) & Acceleration Vector (a) -->
+      <g id="arrow">
+        <!-- Acceleration Vector (Blue #0b89dd) -->
+        <g id="groupAcceleration" style="visibility:hidden;">
+          <line id="lineA" x1="508.88" y1="97.22" x2="508.88" y2="154.5"
+            style="fill:none; stroke:#0b89dd; stroke-width:5px;" />
+          <polygon id="arrowheadA" points="503.06 150.53 508.88 172.22 514.69 150.53 503.06 150.53"
+            style="fill:#0b89dd; stroke-width:0px;" />
+          <g id="labelA" transform="translate(471.06 155.12)">
+            <text style="fill:#0b89dd; font-family:A-SOTGirishaStd-Italic, 'A-SukenOT Girisha Std'; font-size:36px;">
+              <tspan x="0" y="0">a</tspan>
+            </text>
+            <line x1="1.72" y1="-25.76" x2="16.41" y2="-25.76" style="fill:none; stroke:#0b89dd; stroke-width:1.5px;" />
+            <polygon points="15.22 -24.02 21.72 -25.76 15.22 -27.5 15.22 -24.02"
+              style="fill:#0b89dd; stroke-width:0px;" />
+          </g>
+        </g>
+
+        <!-- Velocity Vector (Orange-Red #ff4b00) -->
+        <g id="groupVelocity" style="visibility:hidden;">
+          <line id="lineV" x1="508.88" y1="97.22" x2="414.09" y2="97.22"
+            style="fill:none; stroke:#ff4b00; stroke-width:5px;" />
+          <polygon id="arrowheadV" points="418.06 91.4 396.38 97.22 418.06 103.03 418.06 91.4"
+            style="fill:#ff4b00; stroke-width:0px;" />
+          <g id="labelV" transform="translate(408.98 79.34)">
+            <text
+              style="fill:#ff4b00; font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:36px;">
+              <tspan x="0" y="0">v</tspan>
+            </text>
+            <line x1="1.72" y1="-25.76" x2="16.4" y2="-25.76" style="fill:none; stroke:#ff4b00; stroke-width:1.5px;" />
+            <polygon points="15.22 -24.02 21.72 -25.76 15.22 -27.5 15.22 -24.02"
+              style="fill:#ff4b00; stroke-width:0px;" />
+          </g>
+        </g>
+      </g>
+
+      <!-- Dot Layer: Point P -->
+      <g id="dot">
+        <circle id="pointP" cx="508.88" cy="97.22" r="10" style="fill:#000; stroke-width:0px;" />
+        <text id="textP" transform="translate(520.42 86.22)"
+          style="font-family:A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size:36px;">
+          <tspan x="0" y="0">P</tspan>
+        </text>
+      </g>
+
+      <!-- Buttons & Checkboxes Control Panel -->
+      <g id="buttons-control">
+        <!-- Checkbox: 速度を表示 -->
+        <g id="group-chk-velocity" class="cursor-pointer">
+          <use id="chk-velocity-unchecked" width="27" height="26.47" transform="translate(775.72 44.06)"
+            href="#checkbox" style="visibility:visible;"></use>
+          <use id="chk-velocity-checked" width="27" height="26.47" transform="translate(775.72 44.06)"
+            href="#checkbox_-_checked" style="visibility:hidden;"></use>
+          <text transform="translate(817.89 65.41)"
+            style="font-family:rounded-mplus-1p-regular, 'Rounded M+ 1p'; font-size:24px;">
+            <tspan x="0" y="0">速度を表示</tspan>
+          </text>
+          <rect id="hit-chk-velocity" x="770" y="38" width="220" height="40"
+            style="fill:white; opacity:0.001; stroke:none;" />
+        </g>
+
+        <!-- Checkbox: 加速度を表示 -->
+        <g id="group-chk-accel" class="cursor-pointer">
+          <use id="chk-accel-unchecked" width="27" height="26.47" transform="translate(775.72 108.01)" href="#checkbox"
+            style="visibility:visible;"></use>
+          <use id="chk-accel-checked" width="27" height="26.47" transform="translate(775.72 108.01)"
+            href="#checkbox_-_checked" style="visibility:hidden;"></use>
+          <text transform="translate(817.89 129.36)"
+            style="font-family:rounded-mplus-1p-regular, 'Rounded M+ 1p'; font-size:24px;">
+            <tspan x="0" y="0">加速度を表示</tspan>
+          </text>
+          <rect id="hit-chk-accel" x="770" y="102" width="220" height="40"
+            style="fill:white; opacity:0.001; stroke:none;" />
+        </g>
+
+        <!-- Button Play / Pause / Resume Group -->
+        <g id="btn-play-group">
+          <!-- Play (開始) -->
+          <use id="btn-play-valid" class="btn-play cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_開始-off_2" style="visibility:visible;"></use>
+          <use id="btn-play-push" class="btn-play cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_開始-on_2" style="visibility:hidden;"></use>
+          <use id="btn-play-invalid" class="btn-play" width="146" height="48" transform="translate(815.92 492)"
+            href="#_開始-invalid_2-2" style="visibility:hidden;"></use>
+
+          <!-- Pause (一時停止) -->
+          <use id="btn-pause-valid" class="btn-pause cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_一時停止-valid_2" style="visibility:hidden;"></use>
+          <use id="btn-pause-push" class="btn-pause cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_一時停止-push_2" style="visibility:hidden;"></use>
+
+          <!-- Resume (再開) -->
+          <use id="btn-resume-valid" class="btn-resume cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_再開-off_2" style="visibility:hidden;"></use>
+          <use id="btn-resume-push" class="btn-resume cursor-pointer" width="146" height="48"
+            transform="translate(815.92 492)" href="#_再開-on_2" style="visibility:hidden;"></use>
+          <use id="btn-resume-invalid" class="btn-resume" width="146" height="48" transform="translate(815.92 492)"
+            href="#_再開-invalid_2" style="visibility:hidden;"></use>
+        </g>
+
+        <!-- Button Reset Group (最初に戻る) -->
+        <g id="btn-reset-group">
+          <g id="btn-reset">
+            <use id="btn-reset-valid" class="btn-reset cursor-pointer" width="146" height="48"
+              transform="translate(816 556)" href="#_最初に戻る-off_2-7" style="visibility:hidden;"></use>
+            <use id="btn-reset-push" class="btn-reset cursor-pointer" width="146" height="48"
+              transform="translate(816 556)" href="#_最初に戻る-on" style="visibility:hidden;"></use>
+          </g>
+          <use id="btn-reset-invalid" class="btn-reset" width="146" height="48" transform="translate(816 556)"
+            href="#_最初に戻る-invalid_2" style="visibility:visible;"></use>
+        </g>
+      </g>
+      <g>
+        <rect id="rect-overlay" x="0" y="0" width="2000" height="2000" class="cursor-pointer"
+          style="visibility: hidden; fill: transparent; opacity: 0.5"></rect>
+      </g>
+    </svg>
+  </div>
+</body>
+
+</html>
+<!-- (C) 2026 Suken Shuppan. -->

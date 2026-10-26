@@ -56,89 +56,19 @@ body {
 
 #svg_root {
     background-color: transparent;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
 }
 
-@font-face {
-    font-family: "A-SOTCenturyStd-Regular";
-    src: url(../font/A-SOTCenturyStd-Regular.woff);
+/* Safari MacBook Performance Optimization: Subpixel Precision & Pointer-event Isolation */
+.dynamic-object {
+    shape-rendering: geometricPrecision;
+    pointer-events: none;
 }
-@font-face {
-    font-family: "A-SOTJMathCenturyStd-Bold";
-    src: url(../font/A-SOTJMathCenturyStd-Bold.woff);
-}
-@font-face {
-    font-family: "A-SOTMathCenturyStd-Regular";
-    src: url(../font/A-SOTMathCenturyStd-Regular.woff) 
-}
-
-@font-face {
-    font-family: "YuGo-Bold-83pv-RKSJ-H";
-    src: url(../font/yugothib-sub.woff) format("opentype");
-}
-
-@font-face {
-    font-family: "rounded-mplus-1p-medium";
-    src: url(../font/rounded-mplus-1p-medium-sub.woff);
-}
-
-
-@font-face {
-    font-family: "rounded-mplus-1c-medium";
-    src: url(../font/rounded-mplus-1c-regular.woff) format("opentype");
-}
-
-@font-face {
-    font-family: "rounded-mplus-1c-regular";
-    src: url(../font/rounded-mplus-1c-regular.woff) format("opentype");
-}
-
-@font-face {
-    font-family: "rounded-l-mplus-1c-medium";
-    src: url(../font/rounded-l-mplus-1c-medium.woff);
-}
-@font-face {
-    font-family: "A-SOTGirishaStd-Italic";
-    src: url(../font/A-SOTGirishaStd-Italic.woff);
-}
-@font-face {
-    font-family: "A-SOTJMathCenturyStd-Regular";
-    src: url(../font/A-SOTJMathCenturyStd-Regular.woff);
-}
-@font-face {
-    font-family: "fontello";
-    src: url(../font/fontello.woff);
-}
-
-@font-face {
-    font-family: "HiraKakuPro-W3-83pv-RKSJ-H";
-    src: url(../font/Hiragino-Kaku-Gothic-Pro.woff);
-}
-
-@font-face {
-    font-family: "MOGSuujiSI-K40";
-    src: url(../font/MOGSuujiSI-K40.woff) format("opentype");
-}
-@font-face {
-    font-family: "A-SOTCenturyStd-Bold";
-    src: url(../font/A-SOTMathCenturyStd-Bold.woff) ;
-}
-@font-face {
-    font-family: "mplus 1p-black";
-    src: url(../font/A-SOTMathCenturyStd-Bold.woff) ;
-}
-
-/* g[id*="-disabled"] {
-    cursor: default;
-}
-use[id*="-disabled"] {
-    cursor: default;
-}
-
-g[id*="-inactive"],
-use[id*="-inactive"],
-g[id*="rd-"] {
-    cursor: pointer;
-} */
 
 .rect-disabled {
     cursor: default !important;

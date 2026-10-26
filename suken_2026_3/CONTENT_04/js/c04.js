@@ -32,7 +32,7 @@ function getConfig(key, defaultValue) {
 function getTMax() {
   let val = getConfig("t_max", 10);
   val = Math.round(val);
-  return Math.max(0, Math.min(100, val));
+  return Math.max(1, Math.min(100, val));
 }
 
 const cx = 508.88;
@@ -126,7 +126,7 @@ window.initState = null;
 window.initState = () => {
   g_state = {
     c_version: "20260908",
-    c_is_show_log: true,
+    c_is_show_log: false,
     c_is_init_canvas: false,
     c_screen_width: 1024,
     c_screen_height: 648,
@@ -343,6 +343,22 @@ window.initState = () => {
           setTime(currentTime);
         },
       }),
+      ctrl_rect_overlay: new Control({
+        type: "button",
+        id: "rect-overlay",
+        mousedown: function (e) {
+          if (e) { e.stopPropagation?.(); e.preventDefault?.(); }
+        },
+        mouseup: function (e) {
+          if (e) {
+            e.stopPropagation?.();
+            e.preventDefault?.();
+            $(document).trigger("mouseup", { note: "trigger-rect-overlay" });
+          }
+        },
+        render: function () {},
+      }),
+      
     },
   };
 
@@ -365,7 +381,7 @@ $(document).ready(function () {
     syncConfigUI();
     reset();
     showElement("#divBody, #stage_0", true).css("opacity", "1");
-  }, 100);
+  }, 250);
 });
 
 function syncConfigUI() {
@@ -495,6 +511,8 @@ function setTime(t) {
   const px = coordP.x;
   const py = coordP.y;
   const currentAngle = coordP.angle;
+  
+  console.log(`[INFO][Check] t = ${currentTime}, góc = ${currentAngle} rad`);
 
   getEl("#pointP").attr({ cx: px, cy: py });
 
@@ -565,21 +583,22 @@ function setTime(t) {
       }
 
       // omega*t label:
-      // - < 2PI: đặt ở giữa arc (midAngle), như thiết kế gốc
+      // - < 2PI : đặt ở giữa arc (midAngle)
       // - >= 2PI: đặt đối diện OP (currentAngle + PI) để tránh chồng lên xoắn ốc
+      const LABEL_TIP_OFFSET = 28;
+      const r_label = r_tip + LABEL_TIP_OFFSET;
+
       let anchorOmegaX, anchorOmegaY;
-      if (isSpiral) {
-        // Đối diện OP: góc currentAngle + PI, bán kính = r_tip + 28
-        const labelAngleRadius = r_tip + 28;
+      if (angleSweep >= 2 * Math.PI) {
+        // Đối diện OP: góc currentAngle + PI
         const labelOppAngle = currentAngle + Math.PI;
-        anchorOmegaX = cx + labelAngleRadius * Math.cos(labelOppAngle);
-        anchorOmegaY = cy - labelAngleRadius * Math.sin(labelOppAngle);
+        anchorOmegaX = cx + r_label * Math.cos(labelOppAngle);
+        anchorOmegaY = cy - r_label * Math.sin(labelOppAngle);
       } else {
-        // Giữa arc: midAngle, bán kính cố định = angleRadius + 28
+        // Giữa arc: midAngle
         const midAngle = INITIAL_ANGLE + angleSweep / 2;
-        const labelAngleRadius = angleRadius + 28;
-        anchorOmegaX = cx + labelAngleRadius * Math.cos(midAngle);
-        anchorOmegaY = cy - labelAngleRadius * Math.sin(midAngle);
+        anchorOmegaX = cx + r_label * Math.cos(midAngle);
+        anchorOmegaY = cy - r_label * Math.sin(midAngle);
       }
       const labelOmegaX = Math.round((anchorOmegaX - _labelOmegaT_hw.w) * 1000) / 1000;
       const labelOmegaY = Math.round((anchorOmegaY - _labelOmegaT_hw.h) * 1000) / 1000;

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <title>同じ平面上にある点②</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="./css/main.css?timestamp=20260906" />
+</head>
+
+<body touch-action="none" oncontextmenu="return false">
+    <div id="divBody"
+        style="position: relative; width: 100%; height: 648px; overflow: hidden; background: #fff;opacity: 0;">
+
+        <div id="container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+        </div>
+
+        <svg id="svg_root" width="1024" height="648" viewBox="0 0 1024 648"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none;">
+            <defs>
+                <symbol id="最初に戻る-active" data-name="最初に戻る-active" viewbox="0 0 146 48">
+                    <rect y="4" width="146" height="44" rx="14" style="fill: transparent" />
+                    <g>
+                        <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" style="fill: #0b89dd" />
+                        <path
+                            d="M132,3a11,11,0,0,1,11,11V30a11,11,0,0,1-11,11H14A11,11,0,0,1,3,30V14A11,11,0,0,1,14,3H132m0-3H14A14,14,0,0,0,0,14V30A14,14,0,0,0,14,44H132a14,14,0,0,0,14-14V14A14,14,0,0,0,132,0Z"
+                            style="fill: #0b89dd" />
+                    </g>
+                    <rect width="146" height="48" style="fill: none" />
+                    <text transform="translate(39.5 28.98)"
+                        style="font-size: 18px; fill: #fff; font-family: rounded-l-mplus-1c-medium, rounded l-mplus-1c-medium; font-weight: 500">最初に戻る</text>
+                    <path d="M26.1,17.59A6.5,6.5,0,1,1,18.5,24"
+                        style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 3px" />
+                    <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #fff" />
+                </symbol>
+                <symbol id="最初に戻る-disabled" data-name="最初に戻る-invalid" viewbox="0 0 146 48">
+                    <g style="clip-path: url(#clip-path)">
+                        <g style="clip-path: url(#clip-path)">
+                            <rect y="4" width="146" height="44" rx="14" style="fill: #ccc" />
+                            <g>
+                                <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" style="fill: #f2f2f2" />
+                                <path
+                                    d="M132,3a11,11,0,0,1,11,11V30a11,11,0,0,1-11,11H14A11,11,0,0,1,3,30V14A11,11,0,0,1,14,3H132m0-3H14A14,14,0,0,0,0,14V30A14,14,0,0,0,14,44H132a14,14,0,0,0,14-14V14A14,14,0,0,0,132,0Z"
+                                    style="fill: #b3b3b3" />
+                            </g>
+                        </g>
+                        <text transform="translate(39.5 28.98)"
+                            style="font-size: 18px; fill: #b3b3b3; font-family: rounded-l-mplus-1c-medium, rounded l-mplus-1c-medium; font-weight: 500">最初に戻る</text>
+                        <g style="clip-path: url(#clip-path)">
+                            <path d="M26.1,17.59A6.5,6.5,0,1,1,18.5,24"
+                                style="fill: none; stroke: #b3b3b3; stroke-miterlimit: 10; stroke-width: 3px" />
+                            <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #b3b3b3" />
+                        </g>
+                    </g>
+                </symbol>
+                <symbol id="最初に戻る-inactive" data-name="最初に戻る-valid" viewbox="0 0 146 48">
+                    <rect y="4" width="146" height="44" rx="14" style="fill: #ccc" />
+                    <g>
+                        <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" style="fill: #fafafa" />
+                        <path
+                            d="M132,3a11,11,0,0,1,11,11V30a11,11,0,0,1-11,11H14A11,11,0,0,1,3,30V14A11,11,0,0,1,14,3H132m0-3H14A14,14,0,0,0,0,14V30A14,14,0,0,0,14,44H132a14,14,0,0,0,14-14V14A14,14,0,0,0,132,0Z"
+                            style="fill: #0b89dd" />
+                    </g>
+                    <rect width="146" height="48" style="fill: none" />
+                    <text transform="translate(39.5 28.98)"
+                        style="font-size: 18px; fill: #0b89dd; font-family: rounded-l-mplus-1c-medium, rounded l-mplus-1c-medium; font-weight: 500">最初に戻る</text>
+                    <path d="M26.1,17.59A6.5,6.5,0,1,1,18.5,24"
+                        style="fill: none; stroke: #0b89dd; stroke-miterlimit: 10; stroke-width: 3px" />
+                    <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #0b89dd" />
+                </symbol>
+
+            </defs>
+            <filter xmlns="http://www.w3.org/2000/svg" id="drop-shadow-1" filterUnits="userSpaceOnUse">
+                <feOffset dx="0" dy="2.5" />
+                <feGaussianBlur result="blur" stdDeviation="0" />
+                <feFlood flood-color="#000" flood-opacity=".2" />
+                <feComposite in2="blur" operator="in" />
+                <feComposite in="SourceGraphic" />
+            </filter>
+            <rect x="0" y="-55" width="700px" height="100px" style="fill: #ffffff;" />
+            <rect x="0" y="605" width="700px" height="100px" style="fill: #ffffff;" />
+            <rect x="-30" y="0" width="100px" height="1000px" style="fill: #ffffff;" />
+            <rect x="602" y="0" width="100px" height="1000px" style="fill: #ffffff;" />
+
+            <g id="buttons">
+                <g id="btn-reload-group" style="pointer-events: all;">
+                    <use width="146" height="48" transform="translate(830 556)" xlink:href="#最初に戻る-disabled"
+                        id="btn-reload-disabled" class="btn-reload" />
+                    <use width="146" height="48" transform="translate(830 560)" xlink:href="#最初に戻る-active"
+                        id="btn-reload-active" class="btn-reload cursor-pointer" />
+                    <use width="146" height="48" transform="translate(830 556)" xlink:href="#最初に戻る-inactive"
+                        id="btn-reload-inactive" class="btn-reload cursor-pointer" />
+
+                </g>
+            </g>
+
+
+            <g transform="translate(110 70)">
+                <g id="equation">
+                    <line x1="593.7" y1="177.32" x2="636.84" y2="177.32"
+                        style="fill:none; stroke:#000; stroke-miterlimit:10; stroke-width:2px;" />
+                    <polygon points="634.86 180.22 645.7 177.32 634.86 174.41 634.86 180.22"
+                        style="stroke-width:0px;" />
+                    <line x1="714.58" y1="177.32" x2="757.72" y2="177.32"
+                        style="fill:none; stroke:#000; stroke-miterlimit:10; stroke-width:2px;" />
+                    <polygon points="755.74 180.22 766.58 177.32 755.74 174.41 755.74 180.22"
+                        style="stroke-width:0px;" />
+                    <path
+                        d="m726,213.38c-7.49,0-11.63-6.7-11.63-13.57s4.32-13.57,11.73-13.57,11.66,6.91,11.66,13.79-4.32,13.35-11.77,13.35Zm-7.49-13.71c0,4.46,1.58,12.53,7.49,12.53s7.63-7.67,7.63-12.45-1.55-12.31-7.52-12.31-7.6,7.59-7.6,12.24Z"
+                        style="stroke-width:0px;" />
+                    <path
+                        d="m759.69,198.62v-5.87c0-3.96-.47-4.93-3.31-4.93v-1.19h10.29v1.19c-2.95,0-3.42.97-3.42,4.93v14.11c0,4,.47,4.93,3.42,4.93v1.19h-10.29v-1.19c2.84,0,3.31-.94,3.31-4.93v-6.59h-11.19v6.59c0,4,.5,4.93,3.35,4.93v1.19h-10.26v-1.19c2.84,0,3.35-.94,3.35-4.93v-14.11c0-3.96-.5-4.93-3.35-4.93v-1.19h10.26v1.19c-2.84,0-3.35.97-3.35,4.93v5.87h11.19Z"
+                        style="stroke-width:0px;" />
+                    <path d="m676.63,194.29v1.58h-24.98v-1.58h24.98Zm0,6.12v1.58h-24.98v-1.58h24.98Z"
+                        style="stroke-width:0px;" />
+                    <path
+                        d="m692.51,189.31c.12-.47.35-1.29.35-1.75,0-1.21-1.05-.98-2.73-.98l.31-1.29,6.75-1.13-3.9,14.47.08.08c1.29-2.3,3.43-5.23,6.36-5.23,2.03,0,3.55,1.64,3.55,3.74,0,3-3.35,5.5-5.93,6.51l.66,4.06c.08.55.35,2.69,1.17,2.69,1.05,0,2.42-2.81,2.77-3.71l1.25.51c-1.01,1.99-2.89,6.12-5.5,6.12-.98,0-2.03-.08-3.39-8.62l-2.81.7-1.99,7.49h-3.31l6.32-23.67Zm7.76,8.58c0-1.01-.66-1.99-1.72-1.99-1.48,0-4.25,1.4-6.67,8.19,2.77-.55,8.39-2.85,8.39-6.2Z"
+                        style="stroke-width:0px;" />
+                    <path
+                        d="m607.96,213.38c-7.49,0-11.63-6.7-11.63-13.57s4.32-13.57,11.73-13.57,11.66,6.91,11.66,13.79-4.32,13.35-11.77,13.35Zm-7.49-13.71c0,4.46,1.58,12.53,7.49,12.53s7.63-7.67,7.63-12.45-1.55-12.31-7.52-12.31-7.6,7.59-7.6,12.24Z"
+                        style="stroke-width:0px;" />
+                    <path
+                        d="m630.57,206.86c0,4,.47,4.93,3.38,4.93v1.19h-10.37v-1.19c2.95,0,3.42-.94,3.42-4.93v-14.11c0-3.96-.47-4.93-3.42-4.93v-1.19h12.49c4.21,0,8.1,2.2,8.1,6.84,0,5.76-5.26,7.13-10.47,7.13h-3.13v6.26Zm0-7.45h1.37c4.61,0,8.46-.9,8.46-6.16,0-3.89-2.63-5.44-6.26-5.44-3.42,0-3.56,1.48-3.56,4.43v7.16Z"
+                        style="stroke-width:0px;" />
+                    <rect x="581.16" y="161.55" width="200" height="65" style="fill:none; stroke-width:0px;" />
+                    <polygon points="401.01 126.88 401.01 121.88 420.31 127.11 420.31 132.1 401.01 126.88"
+                        style="fill:none; stroke-width:0px;" />
+                    <polygon points="401.01 295.06 401.01 290.06 420.31 295.29 420.31 300.28 401.01 295.06"
+                        style="fill:none; stroke-width:0px;" />
+                </g>
+
+                <g style="pointer-events: all;">
+                    <g id="scroll-bar">
+                        <g id="seekbar" style="cursor: pointer;">
+                            <path
+                                d="m517.11,303.14c1.4,2.52,1.89,5.36,1.89,8.19s-.49,5.53-1.61,7.98c-1.15,2.45-3.25,5.15-6.23,5.15s-4.8-2.31-6.02-4.73c-1.29-2.52-1.82-5.36-1.82-8.16s.49-5.64,1.68-8.02c1.19-2.38,3.25-4.87,6.16-4.87,2.7,0,4.73,2.21,5.95,4.45Zm-5.95-3.29c-4.17,0-4.52,8.96-4.52,11.83,0,3.08.32,11.62,4.73,11.62,3.57,0,4.34-8.09,4.31-11.83,0-2.83-.42-11.62-4.52-11.62Z"
+                                style="stroke-width:0px;" />
+                            <path
+                                d="m852.88,298.7v19.01c0,1.93,0,3.33.74,4.17.94,1.05,2.62,1.05,3.89,1.05v1.16h-12.46v-1.16c1.12,0,2.91,0,3.68-.67,1.08-.91,1.08-2.7,1.08-4.55v-9.87c0-1.05,0-3.08-.49-3.99-.42-.77-1.68-.98-4.48-.98v-1.15c2.56.1,5.36-.88,6.97-3.01h1.08Z"
+                                style="stroke-width:0px;" />
+                            <line x1="511.16" y1="331.34" x2="511.16" y2="346.34"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <line x1="596.16" y1="331.34" x2="596.16" y2="346.34"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <line x1="681.16" y1="331.34" x2="681.16" y2="346.34"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <line x1="766.16" y1="331.34" x2="766.16" y2="346.34"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <line x1="851.16" y1="338.84" x2="511.16" y2="338.84"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <line x1="851.16" y1="331.34" x2="851.16" y2="346.34"
+                                style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:10;" />
+                            <path
+                                d="m632.57,282.19c.11-.46.34-1.25.34-1.71,0-1.18-1.03-.95-2.66-.95l.3-1.25,6.57-1.1-3.8,14.1.08.08c1.25-2.24,3.34-5.09,6.19-5.09,1.98,0,3.46,1.6,3.46,3.65,0,2.93-3.27,5.36-5.77,6.34l.65,3.95c.08.53.34,2.62,1.14,2.62,1.03,0,2.36-2.74,2.7-3.61l1.22.49c-.99,1.94-2.81,5.97-5.36,5.97-.95,0-1.98-.08-3.31-8.4l-2.74.68-1.94,7.29h-3.23l6.15-23.06Zm7.56,8.36c0-.99-.65-1.94-1.67-1.94-1.44,0-4.14,1.37-6.5,7.98,2.7-.53,8.17-2.77,8.17-6.04Z"
+                                style="stroke-width:0px;" />
+                            <path d="m678.74,286.92v1.58h-24.98v-1.58h24.98Zm0,6.12v1.58h-24.98v-1.58h24.98Z"
+                                style="stroke-width:0px;" />
+
+                            <!-- <text id="my-slider-text" x="700" y="300" fill="#000000" font-size="22"
+                                font-weight="bold">0.50</text> -->
+                            <text transform="translate(690 302)"
+                                style="font-family:A-SOTMathCenturyStd-Regular, 'A-SukenOT MathCentury Std'; font-size:35px;">
+                                <tspan id="my-slider-text" x="0" y="0">0.70</tspan>
+                            </text>
+
+                            <rect id="my-slider-bg" x="498.66" y="310" width="365" height="75"
+                                style="fill: none;stroke-width:0px;"></rect>
+                        </g>
+
+                        <g id="scroll-point" transform="translate(0 0)" style="cursor: pointer;">
+                            <g transform="translate(-681.16, 0)">
+                                <path
+                                    d="m677.3,355.78c2.12-4.27,5.59-4.27,7.72,0l9.47,19.04c2.12,4.27.02,7.76-4.68,7.76h-17.3c-4.69,0-6.8-3.49-4.68-7.76l9.47-19.04Z"
+                                    style="fill:#0b89dd; filter:url(#drop-shadow-1); stroke-width:0px;" />
+                            </g>
+                        </g>
+                    </g>
+
+
+                </g>
+            </g>
+            <g>
+                <rect id="rect-overlay" x="0" y="0" width="2000" height="2000" class="cursor-pointer"
+                    style="visibility: hidden; fill: transparent; opacity: 1" />
+            </g>
+        </svg>
+    </div>
+    <script src="./js/config.js?timestamp=20260906"></script>
+
+    <script src="./library/jquery-2.x-git.min.js?timestamp=20260906"></script>
+    <script src="./library/jquery-ui-1.12.1.min.js?timestamp=20260906"></script>
+    <script src="./library/lodash.min.js?timestamp=20260906"></script>
+    <script src="./library/math.js?timestamp=20260906"></script>
+
+    <script src="./library/three.min.js?timestamp=20260906"></script>
+
+    <script src="./library/js/loaders/FontLoader.js?timestamp=20260906"></script>
+    <script src="./library/js/geometries/TextGeometry.js?timestamp=20260906"></script>
+
+    <script src="./library/js/lines/LineSegmentsGeometry.js?timestamp=20260906"></script>
+    <script src="./library/js/lines/LineGeometry.js?timestamp=20260906"></script>
+    <script src="./library/js/lines/LineMaterial.js?timestamp=20260906"></script>
+    <script src="./library/js/lines/LineSegments2.js?timestamp=20260906"></script>
+    <script src="./library/js/lines/Line2.js?timestamp=20260906"></script>
+
+    <script src="./library/js/controls/OrbitControls.js?timestamp=20260906"></script>
+    <script src="./library/js/controls/TransformControls.js?timestamp=20260906"></script>
+
+    <script src="./library/snap.svg-min.js?timestamp=20260906"></script>
+
+    <script src="./js/utils.js?timestamp=20260906"></script>
+    <script src="./js/autoResize.js?timestamp=20260906"></script>
+
+    <script src="./js/math/point2D.js?timestamp=20260906"></script>
+    <script src="./js/math/point3D.js?timestamp=20260906"></script>
+    <script src="./js/math/shape3D.js?timestamp=20260906"></script>
+
+    <script src="./js/math/mathLib.js?timestamp=20260906"></script>
+
+    <script src="./js/math/control.js?timestamp=20260906"></script>
+
+    <script src="./js/svg/svgLib.js?timestamp=20260906"></script>
+
+    <script src="./js/canvas.js?timestamp=20260906"></script>
+
+    <script src="./js/main.js?timestamp=20260906"></script>
+
+</body>
+
+</html>
+<!-- (C) 2026 Suken Shuppan. -->

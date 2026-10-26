@@ -14,7 +14,7 @@ function AutoResize() {
   $(window).resize(function () {
     setTimeout(function () {
       ResizeBody();
-    }, 200);
+    }, 100);
   }).trigger('resize');
 }
 
