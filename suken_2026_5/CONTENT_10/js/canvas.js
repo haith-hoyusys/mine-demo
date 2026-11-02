@@ -143,7 +143,7 @@ function initCanvas() {
     scene.add(new THREE.AmbientLight(0xffffff, 0.8));
 
     createBoxEdges();
-    createPlaneCAB(points.C, points.A, points.B);
+    createPlaneAFC(points.A, points.F, points.C);
 
     pointL = createSphere(getPlaneIntersection(points), 0x000000, 0.07);
     pointL.material.transparent = true;
@@ -275,7 +275,7 @@ function createBoxOccluder() {
     scene.add(mesh);
 }
 
-function createDynamicEdge(p1, p2, color, width, isAlwaysDashed = false) {
+function createDynamicEdge(p1, p2, color, width, isAlwaysDashed = false, backRenderOrder = -100) {
     const group = new THREE.Group();
 
     const frontLine = createLine([p1, p2], color, width, isAlwaysDashed);
@@ -300,7 +300,7 @@ function createDynamicEdge(p1, p2, color, width, isAlwaysDashed = false) {
 
     const backLine = new THREE.Line2(geometry, dashedMat);
     backLine.computeLineDistances();
-    backLine.renderOrder = -100;
+    backLine.renderOrder = backRenderOrder;
 
     dashedMat.depthTest = true;
     dashedMat.depthWrite = true;
@@ -410,7 +410,7 @@ function createBoxEdges() {
             const width = lineOpts.width !== undefined ? lineOpts.width : 3;
 
             if (lineOpts.type === 'dynamic') {
-                createDynamicEdge(p1, p2, parsedColor, width);
+                createDynamicEdge(p1, p2, parsedColor, width, false, lineOpts.backRenderOrder);
             } else if (lineOpts.type === 'dashed') {
                 const line = createLine([p1, p2], parsedColor, width, true);
                 if (lineOpts.renderOrder !== undefined) line.renderOrder = lineOpts.renderOrder;
@@ -433,8 +433,7 @@ function createBoxEdges() {
         createLine([points.O, points.C], 0x000000, 3).renderOrder = -1;
 
         createLine([points.G, points.H], 0x000000, 3).renderOrder = -1;
-        createLine([points.A, points.B], 0x000000, 2.2).renderOrder = -1;
-        createLine([points.B, points.C], 0x000000, 2.2).renderOrder = -1;
+        createLine([points.A, points.F], 0x000000, 2.2).renderOrder = -1;
         createLine([points.C, points.A], 0x000000, 2.2).renderOrder = -1;
     }
 
@@ -530,7 +529,7 @@ function setupInteractions() {
 }
 
 function getPlaneIntersection(pts) {
-    const plane = new THREE.Plane().setFromCoplanarPoints(pts.C, pts.A, pts.B);
+    const plane = new THREE.Plane().setFromCoplanarPoints(pts.A, pts.F, pts.C);
     const line = new THREE.Line3(pts.O, pts.H);
     const L = new THREE.Vector3();
     plane.intersectLine(line, L);
@@ -554,11 +553,11 @@ const LABEL_OFFSETS = {
     F: new THREE.Vector3(0.2, -0.1, -0.2),
     G: new THREE.Vector3(0.3, -0.2, 0),
     H: new THREE.Vector3(0, 0.4, 0),
-    P: new THREE.Vector3(0.2, -0.3, -0.2)
+    M: new THREE.Vector3(0.2, -0.3, -0.2)
 };
 
 function createAll3DLabels() {
-    const names = ["a", "b", "c", "O", "A", "B", "C", "D", "E", "F", "G", "H", "P"];
+    const names = ["a", "b", "c", "O", "A", "B", "C", "D", "E", "F", "G", "H", "M"];
 
     names.forEach(name => {
         if (canvasLabels[name]) {
@@ -567,11 +566,11 @@ function createAll3DLabels() {
         }
 
         const color = 0x000000;
-        const labelMesh = create3DLabel(name, color, 0.35, (name === "P"));
+        const labelMesh = create3DLabel(name, color, 0.35, (name === "M"));
         if (!labelMesh) return;
 
         let pos;
-        if (name === "P") {
+        if (name === "M") {
             pos = getPlaneIntersection(points);
         } else if (name === "a") {
             pos = new THREE.Vector3().addVectors(points.O, points.A).multiplyScalar(0.5);
@@ -610,7 +609,7 @@ function updateLabelsSmart() {
         if (!label) continue;
 
         let pos;
-        if (name === "P") {
+        if (name === "M") {
             pos = getPlaneIntersection(points);
         } else if (name === "a") {
             pos = new THREE.Vector3().addVectors(points.O, points.A).multiplyScalar(0.5);
@@ -640,9 +639,9 @@ function updateLabelsSmart() {
 }
 
 
-function createPlaneCAB(C, A, B) {
+function createPlaneAFC(A, F, C) {
     const geometry = new THREE.BufferGeometry();
-    const vertices = new Float32Array([C.x, C.y, C.z, A.x, A.y, A.z, B.x, B.y, B.z]);
+    const vertices = new Float32Array([A.x, A.y, A.z, F.x, F.y, F.z, C.x, C.y, C.z]);
     geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
     geometry.computeVertexNormals();
 
@@ -787,9 +786,9 @@ function updateP(k) {
 function updateAllLabels() {
     const center = new THREE.Vector3().addVectors(points.O, points.G).multiplyScalar(0.5);
 
-    if (canvasLabels["P"] && pointP) {
-        const offsetP = getLabelOffset(pointP.position, center, 0.3);
-        canvasLabels["P"].position.copy(pointP.position).add(offsetP);
+    if (canvasLabels["M"] && pointL) {
+        const offsetM = getLabelOffset(pointL.position, center, 0.3);
+        canvasLabels["M"].position.copy(pointL.position).add(offsetM);
     }
 }
 

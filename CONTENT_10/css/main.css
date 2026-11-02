@@ -1,0 +1,77 @@
+#divBody {
+    -webkit-user-select: none;
+    /* webkit (safari, chrome) browsers */
+    -moz-user-select: none;
+    /* mozilla browsers */
+    -khtml-user-select: none;
+    /* webkit (konqueror) browsers */
+    -ms-user-select: none;
+    /* IE10+ */
+    visibility: hidden;
+}
+
+/* ------------- NEW -------------- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    touch-action: none;
+    background-color: #fff;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#btn-reload-active,
+#btn-reload-inactive {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+body,
+#divBody {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#rect-overlay {
+    touch-action: none !important;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+    font-family: "A-SOTMathCenturyStd-Regular";
+    src: url(../font/A-SOTMathCenturyStd-Regular.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "rounded-l-mplus-1c-medium";
+    src: url(../font/rounded-mplus-1p-medium.woff) format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "rounded l-mplus-1c-medium";
+    src: url(../font/rounded-mplus-1p-medium.woff) format("woff");
+    font-display: swap;
+}
+
+g[id*="-disabled"],
+use[id*="-disabled"] {
+    cursor: default;
+}
+
+g[id*="-inactive"],
+use[id*="-inactive"] {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

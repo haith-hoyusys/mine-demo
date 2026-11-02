@@ -1,0 +1,96 @@
+#divBody {
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+  opacity: 0;
+}
+
+/* ------------- NEW -------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  touch-action: none;
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.btn-bg .item-top {
+  opacity: 0;
+}
+
+.btn-bg:hover .item-background {
+  opacity: 0;
+}
+
+.btn-bg:hover .item-top {
+  opacity: 1;
+}
+
+.draggable-zone {
+  opacity: 0.001;
+}
+
+.draggable-zone:focus {
+  outline: none !important;
+}
+
+.btn-pointer,
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-pencil {
+  background: gray;
+  width: 32px;
+  height: 32px;
+}
+
+#graph-grid {
+  opacity: 0;
+}
+
+.font-text {
+  font-family: "rounded-l-mplus-1c-medium" !important;
+}
+
+.rect-disabled {
+  cursor: default !important;
+}
+
+:focus-visible,
+:focus {
+  outline: 0px !important;
+}
+
+#svg-pattern-1,
+#svg-pattern-2,
+#svg-pattern-3,
+#svg-pattern-4,
+#svg-pattern-5 {
+  visibility: hidden;
+  opacity: 0.2;
+}
+
+#svg-pattern-5 {
+  visibility: visible;
+}
+
+.obj-cursor {
+  cursor: pointer;
+}
+
+/* #divBody {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+#div-svg {
+  background: rgba(0, 255, 0, 0.5);
+}
+
+#container {
+  background: rgba(0, 0, 255, 0.5);
+} */

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+  <title>交点の位置ベクトル</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/main.css?ts=202604151" />
+  <link rel="stylesheet" href="css/normalize.css?ts=202604151" />
+  <link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css?ts=202604151" />
+  <link rel="stylesheet" href="css/index.css?ts=202604151" />
+
+  <script src="js/jquery-3.2.1.min.js?ts=202604151" defer></script>
+  <script src="js/jquery-ui.min.js?ts=202604151" defer></script>
+  <script src="js/lodash.min.js?ts=202604151" defer></script>
+  <script src="js/3D-1.0.2.js?ts=202604151" defer></script>
+  <script src="js/config.js?ts=202604151" defer></script>
+  <script src="js/index.js?ts=202604151" defer></script>
+  <script src="js/autoResize.js?ts=202604151" defer></script>
+</head>
+
+<body touch-action="none" oncontextmenu="return false">
+  <div id="overlay" style="width: 100%; height: 100%; z-index: -1; background-color: transparent; position: absolute">
+  </div>
+  <div id="divBody" style="position: relative; left: 0px; top: 0px; overflow: hidden">
+    <div id="div-svg"
+      style="position: absolute; top: 0%; left: 0px; width: 100%; height: 100%; z-index: 2; pointer-events: auto">
+      <svg id="svg_root" width="1024" height="648" viewBox="0 0 1024 648" xmlns="http://www.w3.org/2000/svg"
+        style="left: 0px; z-index: -1">
+        <g transform="matrix(1,0,0,1,0,0)" id="background">
+          <rect id="rect-bg" width="1024" height="648" style="fill: none; opacity: 0; stroke: none" />
+        </g>
+        <defs>
+          <clipPath id="clippath">
+            <rect y="0" width="146" height="48" style="fill: none" />
+          </clipPath>
+          <clipPath id="clippath-1">
+            <rect y="0" width="146" height="48" style="fill: none" />
+          </clipPath>
+          <clipPath id="clippath-2">
+            <rect y="0" width="146" height="48" style="fill: none" />
+          </clipPath>
+          <symbol id="_最初に戻る-invalid_2" data-name="最初に戻る-invalid 2" viewBox="0 0 146 48">
+            <g style="clip-path: url(#clippath)">
+              <g style="clip-path: url(#clippath-1)">
+                <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc" />
+                <g>
+                  <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #f2f2f2" />
+                  <path
+                    d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+                    style="fill: #b3b3b3" />
+                </g>
+              </g>
+              <text transform="translate(39.5 28.98)"
+                style="fill: #b3b3b3; font-family: rounded-mplus-1p-medium; font-size: 18px; font-weight: 500">
+                <tspan x="0" y="0">最初に戻る</tspan>
+              </text>
+              <g style="clip-path: url(#clippath-2)">
+                <path d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+                  style="fill: none; stroke: #b3b3b3; stroke-miterlimit: 10; stroke-width: 3px" />
+                <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #b3b3b3" />
+              </g>
+            </g>
+          </symbol>
+          <clipPath id="clippath-3">
+            <rect y="0" width="146" height="48" style="fill: none" />
+          </clipPath>
+          <clipPath id="clippath-4">
+            <rect y="0" width="146" height="48" style="fill: none" />
+          </clipPath>
+          <symbol id="_開始-off_2" data-name="開始-off 2" viewBox="0 0 146 48">
+            <g id="buttons">
+              <g id="_開始-off_2-2" data-name="開始-off_2">
+                <g id="_最初に戻る-off_2-2" data-name="最初に戻る-off_2">
+                  <g>
+                    <g style="clip-path: url(#clippath-3)">
+                      <g style="clip-path: url(#clippath-4)">
+                        <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc" />
+                        <g>
+                          <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #fafafa" />
+                          <path
+                            d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+                            style="fill: #0b89dd" />
+                        </g>
+                      </g>
+                    </g>
+                    <polygon points="19.31 28.96 19.31 14.96 34.81 21.96 19.31 28.96" style="fill: #0b89dd" />
+                    <text transform="translate(51.36 28.98)"
+                      style="fill: #0b89dd; font-family: rounded-mplus-1p-medium; font-size: 18px; font-weight: 500">
+                      <tspan x="0" y="0" style="letter-spacing: 1em">開</tspan>
+                      <tspan x="36" y="0">始</tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </symbol>
+          <symbol id="_最初に戻る-on" data-name="最初に戻る-on" viewBox="0 0 146 48">
+            <g>
+              <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #0b89dd" />
+              <text transform="translate(39.5 32.98)"
+                style="fill: #fafafa; font-family: rounded-mplus-1p-medium; font-size: 18px; font-weight: 500">
+                <tspan x="0" y="0">最初に戻る</tspan>
+              </text>
+              <path d="M26.1,21.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+                style="fill: none; stroke: #fafafa; stroke-miterlimit: 10; stroke-width: 3px" />
+              <polygon points="26.68 26.55 19.3 20.44 28.28 17.11 26.68 26.55" style="fill: #fafafa" />
+            </g>
+          </symbol>
+          <symbol id="_最初に戻る-off_2-5" data-name="最初に戻る-off 2" viewBox="0 0 146 48">
+            <g>
+              <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc" />
+              <g>
+                <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #fafafa" />
+                <path
+                  d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+                  style="fill: #0b89dd" />
+              </g>
+              <rect x="0" y="0" width="146" height="48" style="fill: none" />
+              <text transform="translate(39.5 28.98)"
+                style="fill: #0b89dd; font-family: rounded-mplus-1p-medium; font-size: 18px; font-weight: 500">
+                <tspan x="0" y="0">最初に戻る</tspan>
+              </text>
+              <path d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5"
+                style="fill: none; stroke: #0b89dd; stroke-miterlimit: 10; stroke-width: 3px" />
+              <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #0b89dd" />
+            </g>
+          </symbol>
+        </defs>
+        <defs xmlns="http://www.w3.org/2000/svg">
+          <symbol id="Toggle-OAD" viewBox="0 0 146 48">
+            <g>
+              <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc;" />
+              <g>
+                <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #fafafa;" />
+                <path
+                  d="M132,3c6.0654,0,11,4.9346,11,11v16c0,6.0654-4.9346,11-11,11H14c-6.0654,0-11-4.9346-11-11V14C3,7.9346,7.9346,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+                  style="fill: #0b89dd;" />
+              </g>
+              <rect width="146" height="48" style="fill: none;" />
+              <g>
+                <text transform="translate(61.1094 30.2915)"
+                  style="fill: #0b89dd; font-family: A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size: 22px;">
+                  <tspan x="0" y="0" style="letter-spacing: .025em;">OA</tspan>
+                  <tspan x="33.0435" y="0">D</tspan>
+                </text>
+                <path
+                  d="M44.1053,12.1224l10.607,18.3695h-21.2135l10.6065-18.3695ZM44.1053,13.7474l-9.2073,15.9326h18.4152l-9.2079-15.9326Z"
+                  style="fill: #0b89dd; stroke: #0b89dd; stroke-miterlimit: 10;" />
+              </g>
+            </g>
+          </symbol>
+          <symbol id="Toggle-OCB-push" viewBox="0 0 146 48">
+            <g>
+              <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #0b89dd;" />
+              <rect width="146" height="48" style="fill: none;" />
+              <g>
+                <text transform="translate(61.1094 34.2915)"
+                  style="fill: #fff; font-family: A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size: 22px;">
+                  <tspan x="0" y="0" style="letter-spacing: .025em;">OC</tspan>
+                  <tspan x="33.6372" y="0">B</tspan>
+                </text>
+                <path
+                  d="M44.1053,16.1224l10.607,18.3695h-21.2135l10.6065-18.3695ZM44.1053,17.7474l-9.2073,15.9326h18.4152l-9.2079-15.9326Z"
+                  style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" />
+              </g>
+            </g>
+          </symbol>
+          <symbol id="Toggle-OAD-push" viewBox="0 0 146 48">
+            <g>
+              <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #0b89dd;" />
+              <rect width="146" height="48" style="fill: none;" />
+              <g>
+                <text transform="translate(61.1094 34.2915)"
+                  style="fill: #fff; font-family: A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size: 22px;">
+                  <tspan x="0" y="0" style="letter-spacing: .025em;">OA</tspan>
+                  <tspan x="33.0435" y="0">D</tspan>
+                </text>
+                <path
+                  d="M44.1053,16.1224l10.607,18.3695h-21.2135l10.6065-18.3695ZM44.1053,17.7474l-9.2073,15.9326h18.4152l-9.2079-15.9326Z"
+                  style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" />
+              </g>
+            </g>
+          </symbol>
+          <symbol id="Toggle-OCB" viewBox="0 0 146 48">
+            <g>
+              <rect x="0" y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc;" />
+              <g>
+                <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #fafafa;" />
+                <path
+                  d="M132,3c6.0654,0,11,4.9346,11,11v16c0,6.0654-4.9346,11-11,11H14c-6.0654,0-11-4.9346-11-11V14C3,7.9346,7.9346,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16c0,7.7,6.3,14,14,14h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z"
+                  style="fill: #0b89dd;" />
+              </g>
+              <rect x="0" width="146" height="48" style="fill: none;" />
+              <g>
+                <text transform="translate(61.1094 30.2915)"
+                  style="fill: #0b89dd; font-family: A-SOTCenturyStd-Regular, 'A-SukenOT Century Std'; font-size: 22px;">
+                  <tspan x="0" y="0" style="letter-spacing: .025em;">OC</tspan>
+                  <tspan x="33.6372" y="0">B</tspan>
+                </text>
+                <path
+                  d="M44.1053,12.1224l10.607,18.3695h-21.2135l10.6065-18.3695ZM44.1053,13.7474l-9.2073,15.9326h18.4152l-9.2079-15.9326Z"
+                  style="fill: #0b89dd; stroke: #0b89dd; stroke-miterlimit: 10;" />
+              </g>
+            </g>
+          </symbol>
+          <clipPath id="clippath">
+            <rect width="146" height="48" style="fill: none;" />
+          </clipPath>
+          <clipPath id="clippath-1">
+            <rect width="146" height="48" style="fill: none;" />
+          </clipPath>
+          <clipPath id="clippath-2">
+            <rect width="146" height="48" style="fill: none;" />
+          </clipPath>
+
+        </defs>
+
+
+        <!-- Geometry Elements -->
+        <g id="geo-layer">
+          <polygon id="poly-highlight" fill="none"></polygon>
+
+          <!-- Blue arcs (bottom layer) -->
+          <path id="arc-2-ob" fill="none" stroke="#005aff" stroke-width="2" />
+          <path id="arc-1-ob" fill="none" stroke="#005aff" stroke-width="2" />
+
+          <g id="mode-OAD-labels">
+            <path id="arc-s" fill="none" stroke="#005aff" stroke-width="2" />
+            <path id="arc-1-s" fill="none" stroke="#005aff" stroke-width="2" />
+          </g>
+
+          <g id="mode-OCB-labels" display="none">
+            <path id="arc-t" fill="none" stroke="#005aff" stroke-width="2" />
+            <path id="arc-1-t" fill="none" stroke="#005aff" stroke-width="2" />
+          </g>
+
+          <!-- Lines / edges (above arcs) -->
+          <line id="line-AD" stroke="#000" stroke-width="2" stroke-linecap="round"></line>
+          <line id="line-BC" stroke="#000" stroke-width="2" stroke-linecap="round"></line>
+          <line id="line-AB" stroke="#000" stroke-width="2" stroke-linecap="round"></line>
+
+          <!-- Ticks -->
+          <line id="tick-oc-1" stroke="#000" stroke-width="2"></line>
+          <line id="tick-oc-2" stroke="#000" stroke-width="2"></line>
+          <line id="tick-ca-1" stroke="#000" stroke-width="2"></line>
+          <line id="tick-ca-2" stroke="#000" stroke-width="2"></line>
+
+          <!-- Vectors: OP first (below), then OA OB (above) -->
+          <g id="vectors"></g>
+
+          <!-- Vector Labels with arrows (above vectors) -->
+          <g id="vec-labels">
+            <g id="grp-vec-a">
+              <text id="txt-vec-a" font-size="36" font-family="A-SOTMathCenturyStd-Regular">a</text>
+              <g id="path-vec-a-arrow" transform="translate(-195.8, -488.58)">
+                <line x1="195.1436" y1="453.6848" x2="208.2842" y2="453.6848"
+                  style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;" />
+                <polygon points="206.3027 456.5901 217.1436 453.6848 206.3027 450.7795 206.3027 456.5901" />
+              </g>
+
+            </g>
+            <g id="grp-vec-b">
+              <text id="txt-vec-b" font-size="36" font-family="A-SOTMathCenturyStd-Regular">b</text>
+              <g id="path-vec-b-arrow" transform="translate(-681.2, -486.6)">
+                <line x1="679.2322" y1="451.7976" x2="692.3728" y2="451.7976"
+                  style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;" />
+                <polygon points="690.3914 454.7029 701.2322 451.7976 690.3914 448.8924 690.3914 454.7029" />
+              </g>
+            </g>
+          </g>
+
+          <!-- Arc labels (texts) -->
+          <text id="lbl-2-ob" transform="translate(0,0)" font-size="36" fill="#005aff"
+            font-family="A-SOTMathCenturyStd-Regular">
+            <tspan>2</tspan>
+          </text>
+          <text id="lbl-1-ob" transform="translate(0,0)" font-size="36" fill="#005aff"
+            font-family="A-SOTMathCenturyStd-Regular">
+            <tspan>1</tspan>
+          </text>
+          <g id="mode-OAD-arc-texts">
+            <text id="text-s" transform="translate(0,0)" fill="#005aff" font-size="36"
+              font-family="A-SOTMathCenturyStd-Regular">
+              <tspan>s</tspan>
+            </text>
+            <text id="text-1-s" transform="translate(0,0)" fill="#005aff" font-size="36"
+              font-family="A-SOTMathCenturyStd-Regular">
+              <tspan>1-s</tspan>
+            </text>
+          </g>
+          <g id="mode-OCB-arc-texts" display="none">
+            <text id="text-t" transform="translate(0,0)" fill="#005aff" font-size="36"
+              font-family="A-SOTMathCenturyStd-Regular">
+              <tspan>t</tspan>
+            </text>
+            <text id="text-1-t" transform="translate(0,0)" fill="#005aff" font-size="36"
+              font-family="A-SOTMathCenturyStd-Regular">
+              <tspan>1-t</tspan>
+            </text>
+          </g>
+
+          <!-- Points with labels (top layer) -->
+          <circle id="pt-O" class="draggable" r="7.5" fill="#0b89dd" />
+          <text id="lbl-O" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>O</tspan>
+          </text>
+
+          <circle id="pt-A" class="draggable" r="7.5" fill="#0b89dd" />
+          <text id="lbl-A" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>A</tspan>
+          </text>
+
+          <circle id="pt-B" class="draggable" r="7.5" fill="#0b89dd" />
+          <text id="lbl-B" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>B</tspan>
+          </text>
+
+          <!-- <circle id="pt-C" r="4" fill="#000" /> -->
+          <text id="lbl-C" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>C</tspan>
+          </text>
+
+          <!-- <circle id="pt-D" r="4" fill="#000" /> -->
+          <text id="lbl-D" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>D</tspan>
+          </text>
+
+          <!-- <circle id="pt-P" r="4" fill="#000" /> -->
+          <text id="lbl-P" transform="translate(0,0)" font-family="A-SOTCenturyStd-Regular" font-size="36">
+            <tspan>P</tspan>
+          </text>
+        </g>
+
+        <!-- Drag Proxy -->
+        <circle id="drag_O" r="20" fill="transparent" style="pointer-events: auto; cursor: pointer;"></circle>
+        <circle id="drag_A" r="20" fill="transparent" style="pointer-events: auto; cursor: pointer;"></circle>
+        <circle id="drag_B" r="20" fill="transparent" style="pointer-events: auto; cursor: pointer;"></circle>
+
+        <!-- button -->
+        <g id="buttons" style="pointer-events: auto;">
+          <g id="btn-reload-group">
+            <use width="146" height="48" transform="translate(816 556)" xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="#_最初に戻る-invalid_2" id="btn-reload-disabled" class="btn-reload" />
+            <use width="146" height="48" transform="translate(816 556)" xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="#_最初に戻る-on" id="btn-reload-active" class="btn-reload cursor-pointer" />
+            <use width="146" height="48" transform="translate(816 556)" xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="#_最初に戻る-off_2-5" id="btn-reload-inactive" class="btn-reload cursor-pointer" />
+          </g>
+
+          <g id="btn-OAD" transform="translate(356 48)" class="cursor-pointer">
+            <use width="146" height="48" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#Toggle-OAD"
+              id="btn-OAD-inactive" />
+            <use width="146" height="48" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#Toggle-OAD-push"
+              id="btn-OAD-active" />
+          </g>
+
+          <g id="btn-OCB" transform="translate(522 48)" class="cursor-pointer">
+            <use width="146" height="48" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#Toggle-OCB"
+              id="btn-OCB-inactive" />
+            <use width="146" height="48" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#Toggle-OCB-push"
+              id="btn-OCB-active" />
+          </g>
+        </g>
+        <!-- <rect id="rect-limits" x="62" y="110" width="900" height="430" rx="10" ry="10"
+          style="fill: none; stroke: red; stroke-dasharray: 6 4; stroke-miterlimit: 10; stroke-width: 2px;" /> -->
+
+        <!-- Rect overlay -->
+        <g>
+          <rect id="rect-overlay" x="0" y="0" width="2000" height="2000" class="cursor-pointer"
+            style="visibility: hidden; fill: transparent; opacity: 0.5" />
+        </g>
+
+
+      </svg>
+    </div>
+    <div style="position: absolute; top: 0%; left: 0px; width: 100%; height: 100%; z-index: 1" id="container"></div>
+  </div>
+</body>
+
+</html>
+<!-- (C) 2026 Suken Shuppan. -->

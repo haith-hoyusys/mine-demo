@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 648">
+  <defs>
+    <symbol id="Toggle-OAD" viewBox="0 0 146 48">
+      <g>
+        <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc;"/>
+        <g>
+          <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #fafafa;"/>
+          <path d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14c0-7.7-6.3-14-14-14h0Z" style="fill: #0b89dd;"/>
+        </g>
+        <rect width="146" height="48" style="fill: none;"/>
+        <g>
+          <text transform="translate(61.11 30.29)" style="fill: #0b89dd; font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 22px;"><tspan x="0" y="0" style="letter-spacing: .02em;">OA</tspan><tspan x="33.04" y="0">D</tspan></text>
+          <path d="M44.11,12.12l10.61,18.37h-21.21l10.61-18.37ZM44.11,13.75l-9.21,15.93h18.42l-9.21-15.93Z" style="fill: #0b89dd; stroke: #0b89dd; stroke-miterlimit: 10;"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="Toggle-OCB-push" viewBox="0 0 146 48">
+      <g>
+        <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #0b89dd;"/>
+        <rect width="146" height="48" style="fill: none;"/>
+        <g>
+          <text transform="translate(61.11 34.29)" style="fill: #fff; font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 22px;"><tspan x="0" y="0" style="letter-spacing: .02em;">OC</tspan><tspan x="33.64" y="0">B</tspan></text>
+          <path d="M44.11,16.12l10.61,18.37h-21.21l10.61-18.37ZM44.11,17.75l-9.21,15.93h18.42l-9.21-15.93Z" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;"/>
+        </g>
+      </g>
+    </symbol>
+    <clipPath id="clippath">
+      <rect width="146" height="48" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect width="146" height="48" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect width="146" height="48" style="fill: none;"/>
+    </clipPath>
+    <symbol id="_最初に戻る-invalid" data-name="最初に戻る-invalid" viewBox="0 0 146 48">
+      <g style="clip-path: url(#clippath);">
+        <g style="clip-path: url(#clippath-1);">
+          <rect y="4" width="146" height="44" rx="14" ry="14" style="fill: #ccc;"/>
+          <g>
+            <rect x="1.5" y="1.5" width="143" height="41" rx="12.5" ry="12.5" style="fill: #f2f2f2;"/>
+            <path d="M132,3c6.07,0,11,4.93,11,11v16c0,6.07-4.93,11-11,11H14c-6.07,0-11-4.93-11-11V14C3,7.93,7.93,3,14,3h118M132,0H14C6.3,0,0,6.3,0,14v16C0,37.7,6.3,44,14,44h118c7.7,0,14-6.3,14-14V14C146,6.3,139.7,0,132,0h0Z" style="fill: #b3b3b3;"/>
+          </g>
+        </g>
+        <text transform="translate(39.5 28.98)" style="fill: #b3b3b3; font-family: rounded-mplus-1c-medium, &apos;Rounded M+ 1c&apos;; font-size: 18px; font-weight: 500;"><tspan x="0" y="0">最初に戻る</tspan></text>
+        <g style="clip-path: url(#clippath-2);">
+          <path d="M26.1,17.59c3.07.52,5.4,3.19,5.4,6.41,0,3.59-2.91,6.5-6.5,6.5s-6.5-2.91-6.5-6.5" style="fill: none; stroke: #b3b3b3; stroke-miterlimit: 10; stroke-width: 3px;"/>
+          <polygon points="26.68 22.55 19.3 16.44 28.28 13.11 26.68 22.55" style="fill: #b3b3b3;"/>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+  <g id="UIPARTS">
+    <use width="146" height="48" transform="translate(816 556)" xlink:href="#_最初に戻る-invalid"/>
+    <g>
+      <use width="146" height="48" transform="translate(356 48)" xlink:href="#Toggle-OAD"/>
+      <use width="146" height="48" transform="translate(522 48)" xlink:href="#Toggle-OCB-push"/>
+    </g>
+  </g>
+  <g id="SHAPE">
+    <polygon points="351.97 186.37 273.08 387.29 682.87 521.23 351.97 186.37" style="fill: #ffcabf;"/>
+    <line x1="572.57" y1="409.61" x2="220.49" y2="521.23" style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    <line x1="682.87" y1="521.23" x2="220.49" y2="521.23" style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    <line x1="273.08" y1="387.29" x2="682.87" y2="521.23" style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;"/>
+  </g>
+  <g id="SCALE">
+    <path d="M455.21,446.82c-37.05-58.59-130.95-86.98-182.13-59.53" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+    <path d="M455.21,446.82c55.53,42.24,123.58,61.5,227.66,74.41" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+    <path d="M273.08,387.29c-42.56,18.2-71.92,91.79-52.59,133.94" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+    <path d="M351.98,186.37c-50.93,32.28-94.62,142.8-78.56,201.05" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+    <path d="M572.57,409.61c-12.77-86.74-133.73-210.13-220.6-223.24" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+    <path d="M682.87,521.23c5.38-52.61-57.53-112.39-110.3-111.62" style="fill: none; stroke: #005aff; stroke-width: 2px;"/>
+  </g>
+  <g id="LABEL">
+    <g>
+      <g>
+        <line x1="182.36" y1="464.5" x2="195.5" y2="464.5" style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        <polygon points="193.52 467.41 204.36 464.5 193.52 461.6 193.52 467.41"/>
+      </g>
+      <text transform="translate(182.86 499.4)" style="font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">a</tspan></text>
+    </g>
+    <g>
+      <g>
+        <line x1="689.3" y1="461.49" x2="702.44" y2="461.49" style="fill: none; stroke: #000; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        <polygon points="700.46 464.4 711.3 461.49 700.46 458.59 700.46 464.4"/>
+      </g>
+      <text transform="translate(691.32 496.39)" style="font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">b</tspan></text>
+    </g>
+    <text transform="translate(331.64 171.76)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">O</tspan></text>
+    <text transform="translate(241.97 385.9)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">C</tspan></text>
+    <text transform="translate(579.95 402.35)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">D</tspan></text>
+    <text transform="translate(192.32 559.35)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">A</tspan></text>
+    <text transform="translate(689.51 559.35)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">B</tspan></text>
+    <text transform="translate(449.68 487.22)" style="font-family: A-SOTCenturyStd-Regular, &apos;A-SukenOT Century Std&apos;; font-size: 36px;"><tspan x="0" y="0">P</tspan></text>
+    <circle cx="226.47" cy="437.93" r="20" style="fill: #fff;"/>
+    <text transform="translate(217.47 449.86)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">2</tspan></text>
+    <circle cx="287.45" cy="268.28" r="20" style="fill: #fff;"/>
+    <text transform="translate(278.45 280.21)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">3</tspan></text>
+    <circle cx="357.29" cy="383.83" r="20" style="fill: #ffcabf;"/>
+    <text transform="translate(350.39 387.01)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">1-t</tspan></text>
+    <circle cx="534.24" cy="496.47" r="20" style="fill: #fff;"/>
+    <text transform="translate(528.94 507.78)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">t</tspan></text>
+    <circle cx="652.62" cy="446.58" r="20" style="fill: #fff;"/>
+    <text transform="translate(643.62 458.51)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">1</tspan></text>
+    <circle cx="488.47" cy="268.78" r="20" style="fill: #fff;"/>
+    <text transform="translate(479.46 280.72)" style="fill: #005aff; font-family: A-SOTMathCenturyStd-Regular, &apos;A-SukenOT MathCentury Std&apos;; font-size: 36px;"><tspan x="0" y="0">2</tspan></text>
+  </g>
+  <g id="vectors">
+    <g>
+      <line x1="351.97" y1="186.37" x2="448.68" y2="430.35" style="fill: none; stroke: #ff4b00; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <polygon points="441.82 428.81 455.21 446.82 452.62 424.52 441.82 428.81" style="fill: #ff4b00;"/>
+    </g>
+    <g>
+      <line x1="351.97" y1="186.37" x2="670.42" y2="508.63" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <polygon points="663.5 509.9 682.87 521.23 671.76 501.73 663.5 509.9"/>
+    </g>
+    <g>
+      <line x1="351.97" y1="186.37" x2="226.96" y2="504.74" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <polygon points="223 498.93 220.49 521.23 233.82 503.18 223 498.93"/>
+    </g>
+    <g>
+      <line x1="572.57" y1="409.61" x2="670.42" y2="508.63" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <polygon points="663.5 509.9 682.87 521.23 671.76 501.73 663.5 509.9"/>
+    </g>
+  </g>
+  <g id="DOT">
+    <circle cx="351.97" cy="186.37" r="7.5" style="fill: #0b89dd;"/>
+    <circle cx="220.49" cy="521.23" r="7.5" style="fill: #0b89dd;"/>
+    <circle cx="682.87" cy="521.23" r="7.5" style="fill: #0b89dd;"/>
+  </g>
+  <g id="DESCRIPTION">
+    <g>
+      <text transform="translate(80.73 115.38)" style="fill: none; font-size: 16px; stroke: #fff; stroke-linejoin: round; stroke-width: 3px;"><tspan style="font-family: rounded-mplus-1p-heavy, &apos;Rounded M+ 1p&apos;; font-weight: 800;"><tspan x="0" y="0">[改修点]</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="20">既存コンテンツ「交点の位置ベクトル」の動作を踏襲する</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="40">変更点</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="60">・三角形</tspan><tspan x="64" y="60" style="letter-spacing: -.03em;">O</tspan><tspan x="76.22" y="60" style="letter-spacing: 0em;">ABの形状</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="80">・点Cの位置（</tspan><tspan x="106.96" y="80" style="letter-spacing: -.03em;">O</tspan><tspan x="119.18" y="80" style="letter-spacing: 0em;">Aを3：2に内分）</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="100">・点Dの位置（OBを2：1に内分）</tspan></tspan></text>
+      <text transform="translate(80.73 115.38)" style="fill: red; font-size: 16px;"><tspan style="font-family: rounded-mplus-1p-heavy, &apos;Rounded M+ 1p&apos;; font-weight: 800;"><tspan x="0" y="0">[改修点]</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="20">既存コンテンツ「交点の位置ベクトル」の動作を踏襲する</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="40">変更点</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="60">・三角形</tspan><tspan x="64" y="60" style="letter-spacing: -.03em;">O</tspan><tspan x="76.22" y="60" style="letter-spacing: 0em;">ABの形状</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="80">・点Cの位置（</tspan><tspan x="106.96" y="80" style="letter-spacing: -.03em;">O</tspan><tspan x="119.18" y="80" style="letter-spacing: 0em;">Aを3：2に内分）</tspan></tspan><tspan style="font-family: rounded-mplus-1p-regular, &apos;Rounded M+ 1p&apos;;"><tspan x="0" y="100">・点Dの位置（OBを2：1に内分）</tspan></tspan></text>
+    </g>
+  </g>
+  <g id="SCENE">
+    <g>
+      <text transform="translate(40.11 60.86)" style="fill: none; font-family: rounded-mplus-1p-bold, &apos;Rounded M+ 1p&apos;; font-size: 40px; font-weight: 700; stroke: #fff; stroke-linejoin: round; stroke-width: 3px;"><tspan x="0" y="0" style="letter-spacing: -.07em;">P</tspan><tspan x="22.32" y="0" style="letter-spacing: -.11em;">A</tspan><tspan x="45.24" y="0" style="letter-spacing: 0em;">TTERN④-初期状態[△</tspan><tspan x="456.44" y="0" style="letter-spacing: 0em;">O</tspan><tspan x="488.76" y="0">C</tspan><tspan x="516.24" y="0" style="letter-spacing: -.02em;">D</tspan><tspan x="543.28" y="0" style="letter-spacing: 0em;">]</tspan></text>
+      <text transform="translate(40.11 60.86)" style="fill: red; font-family: rounded-mplus-1p-bold, &apos;Rounded M+ 1p&apos;; font-size: 40px; font-weight: 700;"><tspan x="0" y="0" style="letter-spacing: -.07em;">P</tspan><tspan x="22.32" y="0" style="letter-spacing: -.11em;">A</tspan><tspan x="45.24" y="0" style="letter-spacing: 0em;">TTERN④-初期状態[△</tspan><tspan x="456.44" y="0" style="letter-spacing: 0em;">O</tspan><tspan x="488.76" y="0">C</tspan><tspan x="516.24" y="0" style="letter-spacing: -.02em;">D</tspan><tspan x="543.28" y="0" style="letter-spacing: 0em;">]</tspan></text>
+    </g>
+  </g>
+</svg>
